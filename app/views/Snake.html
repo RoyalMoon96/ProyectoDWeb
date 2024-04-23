@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>SnakeTest</title>
+    
+    <style>
+            .card-img-top{
+                margin-top: 5%;
+                margin-left: 1%;
+                margin-right: 1%;
+                background-color: #ffffff66;
+                border-radius:3ch;
+            }
+        .cell{
+            width:3ch;
+            Height:3ch;
+        }
+        .cell{
+            /* background-color: bisque; */
+            background-color: gainsboro;
+        }
+        .cell[value="A"]{
+            background-color:rgb(240, 37, 37);
+            color:rgb(255, 182, 183);
+        }
+        .cell[value="S1"]{
+            background-color: green;
+        }
+        .cell[value="s1"]{
+            background-color: greenyellow;
+        }
+        .cell[value="S2"]{
+            background-color: brown;
+        }
+        .cell[value="s2"]{
+            background-color:coral;
+        }
+        
+    </style>
+</head>
+<header>
+    <nav
+            class="navbar navbar-expand-sm  position-sticky top-0 start-0" style="z-index: 1000; background: linear-gradient(0grad,#ffb84785, #ffb847)"
+        >
+            <div class="container-fluid">
+                <a class="navbar-brand" href="home.html"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Google_Earth_icon.svg/2048px-Google_Earth_icon.svg.png" alt="Logo" class="logo" style="width: 35px; height: 35px;"></a>
+                <button
+                    class="navbar-toggler d-lg-none"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapsibleNavId"
+                    aria-controls="collapsibleNavId"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav me-auto mt-2 mt-lg-0" style="align-items: center;">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="home.html" aria-current="page"
+                                ><b>JUEGOS.COM</b>
+                                <span class="visually-hidden">(current)</span></a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="estadísticas.html">ESTADÍSTICAS</a>
+                        </li>
+                    </ul>
+
+                    <form class="d-flex my-2 my-lg-0">
+                        <input
+                            class="form-control me-sm-2"
+                            type="text"
+                            placeholder="Buscar juegos..."
+                        />
+                        <button class="btn my-2 my-sm-0" type="submit" style="background-color: #bf491e;">
+                            BUSCAR
+                        </button>
+                        
+                    </form>
+                    <a href="#" style="margin-left: 1cap;"><br><i class='fas fa-user-circle' role="button" style='font-size:36px; color: #FFF4CD; margin-left: 10px;' data-bs-toggle="modal" data-bs-target="#loginModal"></i><br>Player1</a>
+                    <a href="#" style="margin-left: 1cap;"><br><i class='fas fa-user-circle' role="button" style='font-size:36px; color: #FFF4CD; margin-left: 10px;' data-bs-toggle="modal" data-bs-target="#loginModal"></i><br>Player2</a>
+
+                </div>
+            </div>
+        </nav>
+</header>
+
+<body id="body" style="background-color: #FFF4CD;" >
+    <div class="container">
+    <div class="row">   
+        <div class="col-12 col-md-12 col-lg-6">
+            <table id="table" style="text-align: center; margin-top:1cap;" border>
+            </table>
+        </div>     
+        <div class="col-12 col-md-12 col-lg-6" style="background-color:cornsilk;">
+            <h1>Games:</h1>
+                
+                <table  style="min-width:50%;max-width:100%;border-radius: 10%;background-color: rgba(128, 128, 128, 0.324);">
+                    <tr style="height:10ch;">
+                        <td style="width:15ch">
+                            <a href="Gato.html">
+                            <img class="card-img-top" style="margin-left: 5%;margin-bottom: 5%;max-height:10cap;max-width: 10cap; border-radius: 90%;" src="https://img.freepik.com/vector-premium/tic-tac-toe-esbozado-aislado-juego-vintage-estilo-dibujado-mano-cruz-grabada-cero-disenado-impresion-carteles-ilustracion-libros-logotipo-icono-tatuaje-ilustracion-vectorial-vintage_186802-4488.jpg?w=360" alt="Title" />
+                            </a>
+                        </td>
+                        <td>
+                            <a href="Gato.html">
+                            <h4 class="card-title" style="font-size: 3cap;">Gato</h4>
+                        </a>
+                        </td>
+                    </tr>
+                    <tr><td colspan="2"><hr></td></tr>
+                    <tr style="height:10ch;">
+                        <td style="width:15ch">
+                            <a href="Conecta4.html">
+                                <img class="card-img-top" style="margin-left: 5%;margin-bottom: 5%;max-height:10cap;max-width: 10cap; border-radius: 90%;" src="https://m.media-amazon.com/images/I/81vwhh8B6AL._AC_UF894,1000_QL80_.jpg" alt="Title" />
+                            </a>
+                        </td>
+                        <td>
+                            <a href="Conecta4.html">
+                                <h4 class="card-title" style="font-size: 3cap;">Conecta4</h4>
+                            </a>
+                        </td>
+                    </tr>
+                    </table>
+        </div>
+    </div>
+    <label>Speed Faster</label>
+    <input id="input_speed" type="range" min=10 max=1000 step=1 value=200>
+    <label>Lower</label>
+    <label id="speed"></label>
+    <a  id="btn_start" href="#body"><button class="btn btn-primary" onclick=Start()>Start</button></a>
+    <div style="background-color:cornsilk;">
+        <div class="row" class="col-4" style="margin-left: 5%;"> 
+        <h2>Controls:</h2>
+        <div class="row"> 
+        <table class="col-2 "style="text-align: center; margin: 1ch;">
+            <th colspan="3">Player1 (Green):</th>
+            <tr>
+                <td></td>
+                <td style="border: 1px solid; height: 4ch;" >W</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid;height: 4ch;" >A</td>
+                <td style="border: 1px solid;height: 4ch;" >S</td>
+                <td style="border: 1px solid;height: 4ch;" >D</td>
+            </tr>
+        </table>
+        <table class="col-2"style="text-align: center;" >
+            <th colspan="3">Player2 (brown/red):</th>
+            <tr>
+                <td></td>
+                <td style="border: 1px solid;height: 4ch;" >↑</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid;height: 4ch;" >←</td>
+                <td style="border: 1px solid;height: 4ch;" >↓</td>
+                <td style="border: 1px solid;height: 4ch;">→</td>
+            </tr>
+        </table>
+        <div class="col-7">
+            <h2>Rules:</h2>
+            <lu>
+                <li>Sí chocas con los bordes pierdes</li>
+                <li>Sí chocas con tu serpiente o la del otro jugador pierdes</li>
+                <li>Sí comes una manzana creces 1 bloque</li>
+            </lu>
+        </div>
+        </div>
+        
+    </div>
+    </div>
+    <script src="https://kit.fontawesome.com/3dc7209115.js" crossorigin="anonymous"></script>
+    <script src="../controllers_front/snake.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

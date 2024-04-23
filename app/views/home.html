@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Title</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+        <style>
+            .card{
+                margin-left: 1%;
+                margin-right: 1%;
+                background-color: #ffffff66;
+                border-radius:3ch;
+            }
+            .card-img-top{
+                margin-top: 5%;
+                margin-left: 1%;
+                margin-right: 1%;
+                background-color: #ffffff66;
+                border-radius:3ch;
+            }
+            body{
+                background-color: #FFF4CD;
+            }
+        </style>
+    </head>
+    <header>
+        <nav
+                class="navbar navbar-expand-sm  position-sticky top-0 start-0" style="z-index: 1000; background: linear-gradient(0grad,#ffb84785, #ffb847)"
+            >
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="home.html"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Google_Earth_icon.svg/2048px-Google_Earth_icon.svg.png" alt="Logo" class="logo" style="width: 35px; height: 35px;"></a>
+                    <button
+                        class="navbar-toggler d-lg-none"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapsibleNavId"
+                        aria-controls="collapsibleNavId"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="collapsibleNavId">
+                        <ul class="navbar-nav me-auto mt-2 mt-lg-0" style="align-items: center;">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="home.html" aria-current="page"
+                                    ><b>JUEGOS.COM</b>
+                                    <span class="visually-hidden">(current)</span></a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="estadísticas.html">ESTADÍSTICAS</a>
+                            </li>
+                        </ul>
+
+                        <form class="d-flex my-2 my-lg-0">
+                            <input
+                                class="form-control me-sm-2"
+                                type="text"
+                                placeholder="Buscar juegos..."
+                            />
+                            <button class="btn my-2 my-sm-0" type="submit" style="background-color: #bf491e;">
+                                BUSCAR
+                            </button>
+                            
+                        </form>
+                        <a href="#" style="margin-left: 1cap;"><br><i class='fas fa-user-circle' role="button" style='font-size:36px; color: #FFF4CD; margin-left: 10px;' data-bs-toggle="modal" data-bs-target="#loginModal"></i><br>Player1</a>
+                        <a href="#" style="margin-left: 1cap;"><br><i class='fas fa-user-circle' role="button" style='font-size:36px; color: #FFF4CD; margin-left: 10px;' data-bs-toggle="modal" data-bs-target="#loginModal"></i><br>Player2</a>
+
+                    </div>
+                </div>
+            </nav>
+    </header>
+    <body>
+        <picture>
+            <source type="image/svg+xml" />
+            <img
+                src="https://img.tapimg.net/market/images/407319bb635cef0ff0380451c56f2365.png?imageView2/0/w/720/h/405/q/80/format/jpg/interlace/1/ignore-error/1"
+                class="img-fluid"
+                style="max-height:40ch;width:90%;border-radius:0 0 3ch 3ch; margin-left: 5%; margin-right: 5%;"
+            />
+        </picture>
+        
+        <div class="row" style="margin: 4%; margin-left: 15%;">
+            <div class="card col-5 col-sm-5 col-lg-3 col-md-3">
+                <a href="Gato.html">
+                <img class="card-img-top" src="https://img.freepik.com/vector-premium/tic-tac-toe-esbozado-aislado-juego-vintage-estilo-dibujado-mano-cruz-grabada-cero-disenado-impresion-carteles-ilustracion-libros-logotipo-icono-tatuaje-ilustracion-vectorial-vintage_186802-4488.jpg?w=360" alt="Title" />
+                <div class="card-body">
+                    <h4 class="card-title" style="text-align: center;">Gato</h4>
+                </div>
+            </a>
+            </div>
+            <div class="card col-5 col-sm-5 col-lg-3 col-md-3">
+                    <a href="Snake.html">
+                    <img class="card-img-top" src="https://play-lh.googleusercontent.com/S9ZmNx5LYCj7h2IJZb0QqkXAGki6JRaMQ25ycKfrngDkNBA6jk7rM87YcAH1prV_OA" alt="Title" />
+                    <div class="card-body">
+                        <h4 class="card-title" style="text-align: center;
+                    ">Snake</h4>
+                </div>
+            </a>
+            </div>
+            <div class="card col-5 col-sm-5 col-lg-3 col-md-3">
+                <a href="Conecta4.html">
+                <img class="card-img-top" src="https://m.media-amazon.com/images/I/81vwhh8B6AL._AC_UF894,1000_QL80_.jpg" alt="Title" />
+                <div class="card-body">
+                    <h4 class="card-title" style="text-align: center;
+                    ">Conecta4</h4>
+                </div>
+            </a>
+            </div>
+            
+        </div>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"
+        ></script>
+        <script src="https://kit.fontawesome.com/39f78fcbb4.js" crossorigin="anonymous"></script>
+    </body>
+</html>

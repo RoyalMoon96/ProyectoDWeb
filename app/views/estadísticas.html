@@ -17,21 +17,11 @@
             crossorigin="anonymous"
         />
         <style>
-            .card{
-                margin-left: 1%;
-                margin-right: 1%;
-                background-color: #ffffff66;
-                border-radius:3ch;
-            }
-            .card-img-top{
-                margin-top: 5%;
-                margin-left: 1%;
-                margin-right: 1%;
-                background-color: #ffffff66;
-                border-radius:3ch;
-            }
             body{
                 background-color: #FFF4CD;
+            }
+            td{
+                border: 1px solid
             }
         </style>
     </head>
@@ -73,7 +63,7 @@
                             />
                             <button class="btn my-2 my-sm-0" type="submit" style="background-color: #bf491e;">
                                 BUSCAR
-                            </button> 
+                            </button>
                             
                         </form>
                         <a href="#" style="margin-left: 1cap;"><br><i class='fas fa-user-circle' role="button" style='font-size:36px; color: #FFF4CD; margin-left: 10px;' data-bs-toggle="modal" data-bs-target="#registroModal"></i><br>Player1</a>
@@ -84,45 +74,34 @@
             </nav>
     </header>
     <body>
-        <picture>
-            <source type="image/svg+xml" />
-            <img
-                src="https://img.tapimg.net/market/images/407319bb635cef0ff0380451c56f2365.png?imageView2/0/w/720/h/405/q/80/format/jpg/interlace/1/ignore-error/1"
-                class="img-fluid"
-                style="max-height:40ch;width:90%;border-radius:0 0 3ch 3ch; margin-left: 5%; margin-right: 5%;"
-            />
-        </picture>
-        
-        <div class="row" style="margin: 4%; margin-left: 15%;">
-            <div class="card col-5 col-sm-5 col-lg-3 col-md-3">
-                <a href="Gato.html">
-                <img class="card-img-top" src="https://img.freepik.com/vector-premium/tic-tac-toe-esbozado-aislado-juego-vintage-estilo-dibujado-mano-cruz-grabada-cero-disenado-impresion-carteles-ilustracion-libros-logotipo-icono-tatuaje-ilustracion-vectorial-vintage_186802-4488.jpg?w=360" alt="Title" />
-                <div class="card-body">
-
-                    <h4 class="card-title" style="text-align: center;">Gato</h4>
-                </div>
-            </a>
-            </div>
-            <div class="card col-5 col-sm-5 col-lg-3 col-md-3">
-                    <a href="Snake.html">
-                    <img class="card-img-top" src="https://play-lh.googleusercontent.com/S9ZmNx5LYCj7h2IJZb0QqkXAGki6JRaMQ25ycKfrngDkNBA6jk7rM87YcAH1prV_OA" alt="Title" />
-                    <div class="card-body">
-                        <h4 class="card-title" style="text-align: center;
-                    ">Snake</h4>
-                </div>
-            </a>
-            </div>
-            <div class="card col-5 col-sm-5 col-lg-3 col-md-3">
-                <a href="Conecta4.html">
-                <img class="card-img-top" src="https://m.media-amazon.com/images/I/81vwhh8B6AL._AC_UF894,1000_QL80_.jpg" alt="Title" />
-                <div class="card-body">
-                    <h4 class="card-title" style="text-align: center;
-                    ">Conecta4</h4>
-                </div>
-            </a>
-            </div>
-            
+        <div style="border-radius:4ch;width:90%;margin: 5%;align-items: center; background-color: #ffb8473f;">
+            <br>
+            <h1 style="text-align: center">Estadísticas</h1>
+            <table style="margin: 5%;align-self: center;width:90%;" >
+                <tr style="text-align: center;">
+                    <td >Player1</td>
+                    <td>Player2</td>
+                </tr>
+                <tr>
+                    <td>Wins: </td>
+                    <td>Wins: </td>
+                </tr>
+                <tr>
+                    <td>Losses: </td>
+                    <td>Losses: </td>
+                </tr>
+                <tr>
+                    <td>Matches: </td>
+                    <td>Matches: </td>
+                </tr>
+                <tr>
+                    <td>Score: </td>
+                    <td>Score: </td>
+                </tr>
+            </table>
+            <br>
         </div>
+
 
         <!-- Modal de Registro de Usuarios -->
         <div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
@@ -162,7 +141,8 @@
             </div>
         </div>
 
-       <script
+
+        <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
             crossorigin="anonymous"

@@ -55,19 +55,8 @@
                             </li>
                         </ul>
 
-                        <form class="d-flex my-2 my-lg-0">
-                            <input
-                                class="form-control me-sm-2"
-                                type="text"
-                                placeholder="Buscar juegos..."
-                            />
-                            <button class="btn my-2 my-sm-0" type="submit" style="background-color: #bf491e;">
-                                BUSCAR
-                            </button>
-                            
-                        </form>
-                        <a href="#" style="margin-left: 1cap;"><br><i class='fas fa-user-circle' role="button" style='font-size:36px; color: #FFF4CD; margin-left: 10px;' data-bs-toggle="modal" data-bs-target="#registroModal"></i><br>Player1</a>
-                        <a href="#" style="margin-left: 1cap;"><br><i class='fas fa-user-circle' role="button" style='font-size:36px; color: #FFF4CD; margin-left: 10px;' data-bs-toggle="modal" data-bs-target="#registroModal"></i><br>Player2</a>
+                        <a href="#" style="margin-left: 1cap;"><br><i class='fas fa-user-circle' role="button" style='font-size:36px; color: #FFF4CD; margin-left: 10px;' data-bs-toggle="modal" data-bs-target="#loginModal"></i><br>Player1</a>
+                        <a href="#" style="margin-left: 1cap;"><br><i class='fas fa-user-circle' role="button" style='font-size:36px; color: #FFF4CD; margin-left: 10px;' data-bs-toggle="modal" data-bs-target="#loginModal"></i><br>Player2</a>
 
                     </div>
                 </div>
@@ -103,6 +92,47 @@
         </div>
 
 
+        <!-- Modal de Inicio de Sesión -->
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Correo</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                                    <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Contraseña</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
+                                    <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" required>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">Recordar</label>
+                                </div>
+                                <div style="text-align: center;">
+                                    <button type="submit" class="btn btn-primary">Login</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <p>¿No tienes cuenta? <a href="#" role="button" data-bs-toggle="modal" data-bs-target="#registroModal">Regístrate aquí</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <!-- Modal de Registro de Usuarios -->
         <div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -112,17 +142,16 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
-                            <div class="container">
-                                <div class="row mb-3">
-                                    <div class="col-6">
-                                        <input type="text" class="form-control" placeholder="Nombre(s)" required>
-                                    </div>
-                                    <div class="col-6">
-                                        <input type="text" class="form-control" placeholder="Apellidos" required>
-                                    </div>
+                        <form>            
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <input type="text" class="form-control" placeholder="Nombre(s)" required>
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control" placeholder="Apellidos" required>
                                 </div>
                             </div>
+                            
                             <div class="mb-3">
                                 <input type="email" class="form-control" placeholder="Tu correo electrónico" required>
                             </div>

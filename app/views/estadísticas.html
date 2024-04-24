@@ -1,43 +1,28 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
     <head>
-        <meta charset='utf-8'>
-        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-        <title>SnakeTest</title>
-        
+        <title>Title</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
         <style>
-                .card-img-top{
-                    margin-top: 5%;
-                    margin-left: 1%;
-                    margin-right: 1%;
-                    background-color: #ffffff66;
-                    border-radius:3ch;
-                }
-            .cell{
-                width:3ch;
-                Height:3ch;
+            body{
+                background-color: #FFF4CD;
             }
-            .cell{
-                /* background-color: bisque; */
-                background-color: gainsboro;
+            td{
+                border: 1px solid
             }
-            .cell[value="A"]{
-                background-color:rgb(240, 37, 37);
-                color:rgb(255, 182, 183);
-            }
-            .cell[value="S1"]{
-                background-color: green;
-            }
-            .cell[value="s1"]{
-                background-color: greenyellow;
-            }
-            .cell[value="S2"]{
-                background-color: brown;
-            }
-            .cell[value="s2"]{
-                background-color:coral;
-            }
-            
         </style>
     </head>
     <header>
@@ -77,92 +62,35 @@
                 </div>
             </nav>
     </header>
+    <body>
+        <div style="border-radius:4ch;width:90%;margin: 5%;align-items: center; background-color: #ffb8473f;">
+            <br>
+            <h1 style="text-align: center">Estadísticas</h1>
+            <table style="margin: 5%;align-self: center;width:90%;" >
+                <tr style="text-align: center;">
+                    <td >Player1</td>
+                    <td>Player2</td>
+                </tr>
+                <tr>
+                    <td>Wins: </td>
+                    <td>Wins: </td>
+                </tr>
+                <tr>
+                    <td>Losses: </td>
+                    <td>Losses: </td>
+                </tr>
+                <tr>
+                    <td>Matches: </td>
+                    <td>Matches: </td>
+                </tr>
+                <tr>
+                    <td>Score: </td>
+                    <td>Score: </td>
+                </tr>
+            </table>
+            <br>
+        </div>
 
-    <body id="body" style="background-color: #FFF4CD;">
-        <div class="container">
-        <div class="row">   
-            <div class="col-12 col-md-12 col-lg-6">
-                <table id="table" style="text-align: center; margin-top:1cap;" border>
-                </table>
-                <label>Speed Faster</label>
-                <input id="input_speed" type="range" min=10 max=1000 step=1 value=200>
-                <label>Lower</label>
-                <label id="speed"></label>
-                <a  id="btn_start" href="#body"><button class="btn btn-primary" onclick=Start()>Start</button></a>
-                
-            </div>     
-            <div class="col-12 col-md-12 col-lg-6" style="background-color:cornsilk;">
-                <h1>Games:</h1>
-                    
-                    <table  style="min-width:50%;max-width:100%;border-radius: 10%;background-color: rgba(128, 128, 128, 0.324);">
-                        <tr style="height:10ch;">
-                            <td style="width:15ch">
-                                <a href="Gato.html">
-                                <img class="card-img-top" style="margin-left: 5%;margin-bottom: 5%;max-height:10cap;max-width: 10cap; border-radius: 90%;" src="https://img.freepik.com/vector-premium/tic-tac-toe-esbozado-aislado-juego-vintage-estilo-dibujado-mano-cruz-grabada-cero-disenado-impresion-carteles-ilustracion-libros-logotipo-icono-tatuaje-ilustracion-vectorial-vintage_186802-4488.jpg?w=360" alt="Title" />
-                                </a>
-                            </td>
-                            <td>
-                                <a href="Gato.html">
-                                <h4 class="card-title" style="font-size: 3cap;">Gato</h4>
-                            </a>
-                            </td>
-                        </tr>
-                        <tr><td colspan="2"><hr></td></tr>
-                        <tr style="height:10ch;">
-                            <td style="width:15ch">
-                                <a href="Conecta4.html">
-                                    <img class="card-img-top" style="margin-left: 5%;margin-bottom: 5%;max-height:10cap;max-width: 10cap; border-radius: 90%;" src="https://m.media-amazon.com/images/I/81vwhh8B6AL._AC_UF894,1000_QL80_.jpg" alt="Title" />
-                                </a>
-                            </td>
-                            <td>
-                                <a href="Conecta4.html">
-                                    <h4 class="card-title" style="font-size: 3cap;">Conecta4</h4>
-                                </a>
-                            </td>
-                        </tr>
-                        </table>
-            </div>
-        </div>
-        <div style="background-color:cornsilk;">
-            <div class="row" class="col-4" style="margin-left: 5%; margin-bottom: 50px;"> 
-                <h2>Controls:</h2>
-                <div class="row" style="margin-bottom: 10px;"> 
-                    <table class="col-2 "style="text-align: center; margin: 1ch;">
-                        <th colspan="3">Player1 (Green):</th>
-                        <tr>
-                            <td></td>
-                            <td style="border: 1px solid; height: 4ch;" >W</td>
-                        </tr>
-                        <tr>
-                            <td style="border: 1px solid;height: 4ch;" >A</td>
-                            <td style="border: 1px solid;height: 4ch;" >S</td>
-                            <td style="border: 1px solid;height: 4ch;" >D</td>
-                        </tr>
-                    </table>
-                    <table class="col-2"style="text-align: center;" >
-                        <th colspan="3">Player2 (brown/red):</th>
-                        <tr>
-                            <td></td>
-                            <td style="border: 1px solid;height: 4ch;" >↑</td>
-                        </tr>
-                        <tr>
-                            <td style="border: 1px solid;height: 4ch;" >←</td>
-                            <td style="border: 1px solid;height: 4ch;" >↓</td>
-                            <td style="border: 1px solid;height: 4ch;">→</td>
-                        </tr>
-                    </table>
-                    <div class="col-7">
-                        <h2>Rules:</h2>
-                        <lu>
-                            <li>Sí chocas con los bordes pierdes</li>
-                            <li>Sí chocas con tu serpiente o la del otro jugador pierdes</li>
-                            <li>Sí comes una manzana creces 1 bloque</li>
-                        </lu>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
 
         <!-- Modal de Inicio de Sesión -->
         <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -241,10 +169,18 @@
                 </div>
             </div>
         </div>
-        
-        <script src="https://kit.fontawesome.com/3dc7209115.js" crossorigin="anonymous"></script>
-        <script src="../controllers_front/snake.js"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"
+        ></script>
+        <script src="https://kit.fontawesome.com/39f78fcbb4.js" crossorigin="anonymous"></script>
     </body>
 </html>

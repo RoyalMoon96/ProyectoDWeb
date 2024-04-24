@@ -152,7 +152,7 @@ document.addEventListener('keydown', function(e) {
             InputP2_y=0
             INPUTP2=true
             break;
-            case 'ARROWRIGHT':
+        case 'ARROWRIGHT':
             if (InputP2_x==-1 && InputP2_y==0||INPUTP2==true) break;
             InputP2_x=1
             InputP2_y=0

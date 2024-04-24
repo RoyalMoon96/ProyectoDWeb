@@ -1,21 +1,14 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Title</title>
-        <!-- Required meta tags -->
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
+        <title>Gato</title>
 
-        <!-- Bootstrap CSS v5.2.1 -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-            crossorigin="anonymous"
-        />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://kit.fontawesome.com/39f78fcbb4.js" crossorigin="anonymous"></script>
         <style>
             .card{
                 margin-left: 1%;
@@ -73,7 +66,7 @@
                             />
                             <button class="btn my-2 my-sm-0" type="submit" style="background-color: #bf491e;">
                                 BUSCAR
-                            </button> 
+                            </button>
                             
                         </form>
                         <a href="#" style="margin-left: 1cap;"><br><i class='fas fa-user-circle' role="button" style='font-size:36px; color: #FFF4CD; margin-left: 10px;' data-bs-toggle="modal" data-bs-target="#registroModal"></i><br>Player1</a>
@@ -83,47 +76,90 @@
                 </div>
             </nav>
     </header>
-    <body>
-        <picture>
-            <source type="image/svg+xml" />
-            <img
-                src="https://img.tapimg.net/market/images/407319bb635cef0ff0380451c56f2365.png?imageView2/0/w/720/h/405/q/80/format/jpg/interlace/1/ignore-error/1"
-                class="img-fluid"
-                style="max-height:40ch;width:90%;border-radius:0 0 3ch 3ch; margin-left: 5%; margin-right: 5%;"
-            />
-        </picture>
-        
-        <div class="row" style="margin: 4%; margin-left: 15%;">
-            <div class="card col-5 col-sm-5 col-lg-3 col-md-3">
-                <a href="Gato.html">
-                <img class="card-img-top" src="https://img.freepik.com/vector-premium/tic-tac-toe-esbozado-aislado-juego-vintage-estilo-dibujado-mano-cruz-grabada-cero-disenado-impresion-carteles-ilustracion-libros-logotipo-icono-tatuaje-ilustracion-vectorial-vintage_186802-4488.jpg?w=360" alt="Title" />
-                <div class="card-body">
-                    <h4 class="card-title" style="text-align: center;
-                    ">Gato</h4>
+    <body style="background-color: #FFF4CD">
+
+        <!-- Contenido -->
+        <h1 style="padding: 5px; padding-top: 5px;"><b>GATO</b></h1>
+
+        <!-- Juegos -->
+        <div class="col" style="padding-left: 10px; padding-right: 10px; overflow: hidden">
+            <div class="row" >
+                <!-- Gato -->
+                <div class="col" >
+                    <div class="col" style="background-color: #d8c7c0; border: 1px solid black;">
+                        <!-- Tabla Gato -->
+                        <table id="Gato" border="5" style="background-color:rgb(104, 61, 61); max-height: 50%; width: 100%;"
+
+                            <tr>
+                                <td style="background-color: #dfd9d7; height: 100px;">1,1</td>
+                                <td style="background-color: #b2a5a0;">2,1</td>
+                                <td style="background-color: #dfd9d7;">3,1</td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: #b2a5a0; height: 100px;">1,2</td>
+                                <td style="background-color: #dfd9d7;">2,2</td>
+                                <td style="background-color: #b2a5a0;">3,2</td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: #dfd9d7; height: 100px;">1,3</td>
+                                <td style="background-color: #b2a5a0;">2,3</td>
+                                <td style="background-color: #dfd9d7;">3,3</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-            </a>
-            </div>
-            <div class="card col-5 col-sm-5 col-lg-3 col-md-3">
-                    <a href="Snake.html">
-                    <img class="card-img-top" src="https://play-lh.googleusercontent.com/S9ZmNx5LYCj7h2IJZb0QqkXAGki6JRaMQ25ycKfrngDkNBA6jk7rM87YcAH1prV_OA" alt="Title" />
-                    <div class="card-body">
-                        <h4 class="card-title" style="text-align: center;
-                    ">Snake</h4>
+
+                <!-- Juegos varios -->
+                <div class="col-md-6" style="min-width: 20%; background-color:cornsilk;">
+                    <h1>Games:</h1>
+                    <table  style="min-width:50%;max-width:100%;border-radius: 10%;background-color: rgba(128, 128, 128, 0.324);">
+                        <tr style="height:10ch;">
+                            <td style="width:15ch">
+                                <a href="Conecta4.html">
+                                    <img class="card-img-top" style="margin-left: 5%;margin-bottom: 5%;max-height:10cap;max-width: 10cap; border-radius: 90%;" src="https://m.media-amazon.com/images/I/81vwhh8B6AL._AC_UF894,1000_QL80_.jpg" alt="Title" />
+                                </a>
+                            </td>
+                            <td>
+                                <a href="Conecta4.html">
+                                    <h4 class="card-title" style="font-size: 3cap;">Conecta4</h4>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr><td colspan="2"><hr></td></tr>
+                        <tr style="height:10ch;">
+                            <td style="width:15ch">
+                                <a href="Snake.html">
+                                    <img class="card-img-top" style="margin-left: 5%;margin-bottom: 5%;max-height:10cap;max-width: 10cap; border-radius: 90%;" src="https://play-lh.googleusercontent.com/S9ZmNx5LYCj7h2IJZb0QqkXAGki6JRaMQ25ycKfrngDkNBA6jk7rM87YcAH1prV_OA" alt="Title" />
+                                </a>
+                            </td>
+                            <td>
+                                <a href="Snake.html">
+                                    <h4 class="card-title" style="font-size: 3cap;">Snake</h4>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
-            </a>
             </div>
-            <div class="card col-5 col-sm-5 col-lg-3 col-md-3">
-                <a href="Conecta4.html">
-                <img class="card-img-top" src="https://m.media-amazon.com/images/I/81vwhh8B6AL._AC_UF894,1000_QL80_.jpg" alt="Title" />
-                <div class="card-body">
-                    <h4 class="card-title" style="text-align: center;
-                    ">Conecta4</h4>
-                </div>
-            </a>
-            </div>
-            
         </div>
 
+        <!-- Reglas -->
+        <div style="background-color:cornsilk;  overflow: hidden">
+            <div class="row" class="col-4" style="margin-left: 5%;"> 
+                <div class="row"> 
+                    <div class="col-7">
+                        <h2>Rules:</h2>
+                        <lu style="word-wrap: break-word;">
+                            <li>Dos jugadores participan en el juego alternando turnos, uno usando "X" y el otro "O" en una casilla vacía del tablero en cada turno.</li>
+                            <li>Gana el que tenga tres de sus símbolos en línea recta: ya sea horizontal, vertical o diagonal.</li>
+                            <li>Si el tablero está lleno y ninguno de los jugadores ha logrado formar una línea de tres símbolos, el juego termina en empate.</li>
+                        </lu>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
         <!-- Modal de Registro de Usuarios -->
         <div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -162,17 +198,5 @@
             </div>
         </div>
 
-        
-        <script
-            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"
-        ></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-            crossorigin="anonymous"
-        ></script>
-        <script src="https://kit.fontawesome.com/39f78fcbb4.js" crossorigin="anonymous"></script>
     </body>
 </html>

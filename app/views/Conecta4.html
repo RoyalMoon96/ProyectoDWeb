@@ -26,6 +26,25 @@
             body{
                 background-color: #FFF4CD;
             }
+            table{
+                background-color:#3498DB;
+            }
+            .cell{
+                background-color: #FFF4CD;
+                height: 100px;
+                border: 5px solid;
+                border-color: #2c678e;
+                border-radius: 100%;
+            }
+            .cell:hover{
+                background-color: rgb(216, 209, 182)
+            }
+            .cell[value="P1"]{
+                background-color: red;
+            }
+            .cell[value="P2"]{
+                background-color: yellow;
+            }
         </style>
     </head>
     <header>
@@ -69,6 +88,7 @@
         <div class="container">
         <div class="row">   
             <div class="col-12 col-md-12 col-lg-6">
+                <h4 id="Turno">Turno de: </h1>
                 <table id="table" style="text-align: center; margin-top:1cap; width: 100%;" border>
                     <tr>
                         <td style="background-color: #dfd9d7; height: 100px;">1,1</td>
@@ -251,5 +271,6 @@
             </div>
         </div>
 
+        <script src="../controllers_front/conecta4.js"></script>
     </body>
 </html>

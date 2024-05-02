@@ -7,48 +7,11 @@ router.use(cors({
 }));
 router.use(express.json());
 
-
 let mongoConnection = "mongodb+srv://admin:admin1@myapp.jvumsxh.mongodb.net/ProyectoFinalDW";
-let db= mongoose.connection;
-db.on('conecting', ()=>{
-    console.log('Conectando...');
-    console.log(mongoose.connection.readyState);
+let User;
+mongoose.connect(mongoConnection).then(function(){
+    User = mongoose.models['users']
 });
-db.on('connected', ()=>{
-    console.log('¡Conectado exitosamente!');
-    console.log(mongoose.connection.readyState);
-});
-
-mongoose.connect(mongoConnection);
-
-let userSchema = mongoose.Schema({
-    nombre: {
-        type: String,
-        required: true
-    },
-    correo: {
-        type: String,
-        required: true
-    },
-    pass: {
-        type: String,
-        required: true
-    }
-});
-/* 
-router.get('/api/users',(req, res) => {
-    let nombre = "User1"
-    User.find({
-        nombre: {$regex: nombre},
-        sexo:"H"
-    }).then(function (docs){
-        res.send(docs);
-        console.log(docs);
-    }).catch((err) => console.log(err));
-    })
-    
- */
-    let User = mongoose.model('users', userSchema);
 
     router.get('/', (req, res) => {
         console.log('Consultando Usuarios');

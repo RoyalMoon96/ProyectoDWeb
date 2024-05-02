@@ -82,16 +82,18 @@
         <div class="container">
         <div class="row">   
             <div class="col-12 col-md-12 col-lg-6">
-                <table id="table" style="text-align: center; margin-top:1cap;" border>
-                </table>
+                
+                <div id="top">
                 <label>Speed Faster</label>
                 <input id="input_speed" type="range" min=10 max=1000 step=1 value=200>
                 <label>Lower</label>
                 <label id="speed"></label>
-                <a  id="btn_start" href="#body"><button class="btn btn-primary" onclick=Start()>Start</button></a>
-                
+                    <a  id="btn_start" href="#top"><button class="btn btn-primary" onclick=Start()>Start</button></a>
+                </div>
+                <table id="table" style="text-align: center; margin-top:1cap;" border>
+                </table>
             </div>     
-            <div class="col-12 col-md-12 col-lg-6" style="background-color:cornsilk;">
+            <div class="col-6 col-md-6 col-lg-3" style="background-color:cornsilk;">
                 <h1>Games:</h1>
                     
                     <table  style="min-width:50%;max-width:100%;border-radius: 10%;background-color: rgba(128, 128, 128, 0.324);">
@@ -121,6 +123,28 @@
                             </td>
                         </tr>
                         </table>
+            </div>
+            <div class="col-6 col-md-6 col-lg-3" style="background-color:cornsilk;">
+                <h1>Sore:</h1>
+                    <table id="SocreTable" border style="min-width:50%;max-width:100%;border-radius: 10%;background-color: rgba(128, 128, 128, 0.324);">
+                        <tr>
+                            <td>
+                                
+                            </td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                        <tr><td colspan="2"><hr></td></tr>
+                        <tr>
+                            <td>
+                                
+                            </td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                    </table>
             </div>
         </div>
         <div style="background-color:cornsilk;">

@@ -1,0 +1,17 @@
+
+                    
+ 
+POST http://localhost:3000/api/users HTTP/1.1
+Content-Type: application/json
+
+    {
+        "nombre": "Drox",
+        "correo": "Drox@Drox.com",
+        "pass": "password",
+        "edad": 10,
+        "sexo": "H",
+    }
+
+
+### 
+Get http://localhost:3000/api/users?nombre=D

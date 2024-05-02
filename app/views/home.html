@@ -65,8 +65,8 @@
                             </li>
                         </ul>
 
-                        <a href="#" style="margin-left: 1cap;"><br><i class='fas fa-user-circle' role="button" style='font-size:36px; color: #FFF4CD; margin-left: 10px;' data-bs-toggle="modal" data-bs-target="#loginModal"></i><br>Player1</a>
-                        <a href="#" style="margin-left: 1cap;"><br><i class='fas fa-user-circle' role="button" style='font-size:36px; color: #FFF4CD; margin-left: 10px;' data-bs-toggle="modal" data-bs-target="#loginModal"></i><br>Player2</a>
+                        <a href="#" style="margin-left: 1cap;"><br><i class='fas fa-user-circle' role="button" style='font-size:36px; color: #FFF4CD; margin-left: 10px;' data-bs-toggle="modal" data-bs-target="#loginModal">Player1</i><br></a></a>
+                        <a href="#" style="margin-left: 1cap;"><br><i class='fas fa-user-circle' role="button" style='font-size:36px; color: #FFF4CD; margin-left: 10px;' data-bs-toggle="modal" data-bs-target="#loginModal">Player2</i><br></a>
 
                     </div>
                 </div>
@@ -74,10 +74,13 @@
     </header>
     <body>
 
-        
+        <div id="Note" class="alert alert-danger" role="alert">
+            <strong>2 Player Games:</strong> Tienen que iniciar sesión dos personas
+        </div>
+
         <div class="row" style="margin: 4%; margin-left: 15%;">
             <div class="card col-5 col-sm-5 col-lg-3 col-md-3">
-                <a href="/Gato">
+                <a id="Game_Gato" href="/Gato">
                 <img class="card-img-top" src="https://img.freepik.com/vector-premium/tic-tac-toe-esbozado-aislado-juego-vintage-estilo-dibujado-mano-cruz-grabada-cero-disenado-impresion-carteles-ilustracion-libros-logotipo-icono-tatuaje-ilustracion-vectorial-vintage_186802-4488.jpg?w=360" alt="Title" />
                 <div class="card-body">
 
@@ -86,7 +89,7 @@
             </a>
             </div>
             <div class="card col-5 col-sm-5 col-lg-3 col-md-3">
-                    <a href="/Snake">
+                    <a id="Game_Snake" href="/Snake" >
                     <img class="card-img-top" src="https://play-lh.googleusercontent.com/S9ZmNx5LYCj7h2IJZb0QqkXAGki6JRaMQ25ycKfrngDkNBA6jk7rM87YcAH1prV_OA" alt="Title" />
                     <div class="card-body">
                         <h4 class="card-title" style="text-align: center;
@@ -95,7 +98,7 @@
             </a>
             </div>
             <div class="card col-5 col-sm-5 col-lg-3 col-md-3">
-                <a href="/Conecta4">
+                <a id ="Game_Conecta4" href="/Conecta4">
                 <img class="card-img-top" src="https://m.media-amazon.com/images/I/81vwhh8B6AL._AC_UF894,1000_QL80_.jpg" alt="Title" />
                 <div class="card-body">
                     <h4 class="card-title" style="text-align: center;
@@ -134,7 +137,7 @@
                                     <label class="form-check-label" for="rememberMe">Recordar</label>
                                 </div>
                                 <div style="text-align: center;">
-                                    <button type="submit" class="btn btn-primary">Login</button>
+                                    <button type="submit" onclick=FindPlayer() class="btn btn-primary">Login</button>
                                 </div>
                             </div>
                         </form>
@@ -195,5 +198,6 @@
             crossorigin="anonymous"
         ></script>
         <script src="https://kit.fontawesome.com/39f78fcbb4.js" crossorigin="anonymous"></script>
+        <script src="../controllers_front/home.js"></script>
     </body>
 </html>

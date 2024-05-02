@@ -6,6 +6,7 @@ const UsersRouter = require('../routes/users');
 const router = express.Router();
 
 router.get('/users', UsersRouter);
+router.use('/api/users', UsersRouter);
 
 router.get('/', (req, res) => res.sendFile(path.resolve(__dirname + "/../views/home.html")));
 router.get('/home', (req, res) => res.sendFile(path.resolve(__dirname + "/../views/home.html")));

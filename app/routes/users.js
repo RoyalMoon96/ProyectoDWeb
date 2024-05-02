@@ -22,7 +22,15 @@ db.on('connected', ()=>{
 mongoose.connect(mongoConnection);
 
 let userSchema = mongoose.Schema({
-    userName: {
+    nombre: {
+        type: String,
+        required: true
+    },
+    correo: {
+        type: String,
+        required: true
+    },
+    pass: {
         type: String,
         required: true
     }
@@ -42,19 +50,21 @@ router.get('/api/users',(req, res) => {
  */
     let User = mongoose.model('users', userSchema);
 
-    router.get('/api/users', (req, res) => {
+    router.get('/', (req, res) => {
         console.log('Consultando Usuarios');
         users = User.find({
-            nombre: "User2"
+            correo:req.query.correo, 
+            pass:req.query.pass, 
         }).then((users) => {res.send(users);})
         //console.table(products);
         
     })
 
-
-    let newUser = {userName:"User2"};
+/* 
+    let newUser = {nombre:"User2",correo:"usuario1@usuarios.com",pass:"pass1"
+};
     let user = new User (newUser);
     user.save().then((doc) => console.log("User creado: "+doc));
 
-
+ */
     module.exports = router;

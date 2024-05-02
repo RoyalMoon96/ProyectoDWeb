@@ -12,6 +12,6 @@ Content-Type: application/json
         "sexo": "H",
     }
 
-
-### 
-Get http://localhost:3000/api/users?nombre=D
+  
+###   
+Get http://localhost:3000/api/users?correo=usuario1@usuarios.com&pass=pass1

@@ -1,4 +1,21 @@
 
+PlayersCount()
+function PlayersCount(){
+    if (window.sessionStorage.length != 2) window.location.href=("http://localhost:3000/home");
+    if (window.sessionStorage.length == 1) {
+        let player1= JSON.parse(sessionStorage.getItem("player1"));
+        document.getElementById("navbar_player1").innerHTML='<a id="navbar_player1" style="margin-left: 1cap;"><br><i role="button" class="fas" style="font-size:36px; color: #FFF4CD; margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#CerrarSecion"><img style="height:2ch;width:2ch;border-radius:100%;" src="'+player1.img+'">'+player1.nombre+'</i><br></a>'
+        ""+player1.nombre
+    }
+    if (window.sessionStorage.length == 2) {
+        let player1= JSON.parse(sessionStorage.getItem("player1"));
+        let player2= JSON.parse(sessionStorage.getItem("player2"));
+        document.getElementById("navbar_player1").innerHTML='<a id="navbar_player1" style="margin-left: 1cap;"><br><i role="button" class="fas" style="font-size:36px; color: #FFF4CD; margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#CerrarSecion"><img style="height:2ch;width:2ch;border-radius:100%;" src="'+player1.img+'">'+player1.nombre+'</i><br></a>'
+        document.getElementById("navbar_player2").innerHTML='<a id="navbar_player2" style="margin-left: 1cap;"><br><i role="button" class="fas" style="font-size:36px; color: #FFF4CD; margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#CerrarSecion"><img style="height:2ch;width:2ch;border-radius:100%;" src="'+player2.img+'">'+player2.nombre+'</i><br></a>'
+    }
+}
+
+
 let tablero = [
     [0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0],

@@ -33,7 +33,7 @@
                 class="navbar navbar-expand-sm  position-sticky top-0 start-0" style="z-index: 1000; background: linear-gradient(0grad,#ffb84785, #ffb847)"
             >
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="home.html"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Google_Earth_icon.svg/2048px-Google_Earth_icon.svg.png" alt="Logo" class="logo" style="width: 35px; height: 35px;"></a>
+                    <a class="navbar-brand" href="/home"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Google_Earth_icon.svg/2048px-Google_Earth_icon.svg.png" alt="Logo" class="logo" style="width: 35px; height: 35px;"></a>
                     <button
                         class="navbar-toggler d-lg-none"
                         type="button"
@@ -48,18 +48,18 @@
                     <div class="collapse navbar-collapse" id="collapsibleNavId">
                         <ul class="navbar-nav me-auto mt-2 mt-lg-0" style="align-items: center;">
                             <li class="nav-item">
-                                <a class="nav-link active" href="home.html" aria-current="page"
+                                <a class="nav-link active" href="/home" aria-current="page"
                                     ><b>JUEGOS.COM</b>
                                     <span class="visually-hidden">(current)</span></a
                                 >
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="estadísticas.html">ESTADÍSTICAS</a>
+                                <a class="nav-link" href="/Stats">ESTADÍSTICAS</a>
                             </li>
                         </ul>
 
-                        <a href="#" style="margin-left: 1cap;"><br><i class='fas fa-user-circle' role="button" style='font-size:36px; color: #FFF4CD; margin-left: 10px;' data-bs-toggle="modal" data-bs-target="#loginModal"></i><br>Player1</a>
-                        <a href="#" style="margin-left: 1cap;"><br><i class='fas fa-user-circle' role="button" style='font-size:36px; color: #FFF4CD; margin-left: 10px;' data-bs-toggle="modal" data-bs-target="#loginModal"></i><br>Player2</a>
+                        <a href="#" id="navbar_player1" style="margin-left: 1cap;"><br><i class='fas fa-user-circle' role="button" style='font-size:36px; color: #FFF4CD; margin-left: 10px;' data-bs-toggle="modal" data-bs-target="#loginModal">Player1</i><br></a>
+                        <a href="#" id="navbar_player2" style="margin-left: 1cap;"><br><i class='fas fa-user-circle' role="button" style='font-size:36px; color: #FFF4CD; margin-left: 10px;' data-bs-toggle="modal" data-bs-target="#loginModal">Player2</i><br></a>
 
                     </div>
                 </div>
@@ -92,12 +92,12 @@
                     <table  style="min-width:50%;max-width:100%;border-radius: 10%;background-color: rgba(128, 128, 128, 0.324);">
                         <tr style="height:10ch;">
                             <td style="width:15ch">
-                                <a href="Conecta4.html">
+                                <a href="/Conecta4">
                                     <img class="card-img-top" style="margin-left: 5%;margin-bottom: 5%;max-height:10cap;max-width: 10cap; border-radius: 90%;" src="https://m.media-amazon.com/images/I/81vwhh8B6AL._AC_UF894,1000_QL80_.jpg" alt="Title" />
                                 </a>
                             </td>
                             <td>
-                                <a href="Conecta4.html">
+                                <a href="/Conecta4">
                                     <h4 class="card-title" style="font-size: 3cap;">Conecta4</h4>
                                 </a>
                             </td>
@@ -105,12 +105,12 @@
                         <tr><td colspan="2"><hr></td></tr>
                         <tr style="height:10ch;">
                             <td style="width:15ch">
-                                <a href="Snake.html">
+                                <a href="/Snake">
                                     <img class="card-img-top" style="margin-left: 5%;margin-bottom: 5%;max-height:10cap;max-width: 10cap; border-radius: 90%;" src="https://play-lh.googleusercontent.com/S9ZmNx5LYCj7h2IJZb0QqkXAGki6JRaMQ25ycKfrngDkNBA6jk7rM87YcAH1prV_OA" alt="Title" />
                                 </a>
                             </td>
                             <td>
-                                <a href="Snake.html">
+                                <a href="/Snake">
                                     <h4 class="card-title" style="font-size: 3cap;">Snake</h4>
                                 </a>
                             </td>
@@ -208,6 +208,57 @@
                 </div>
             </div>
         </div>
+        
+
+        <!-- Modal Body Cerrar sesion -->
+        <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+        <div
+            class="modal fade"
+            id="CerrarSesion"
+            tabindex="-1"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            
+            role="dialog"
+            aria-labelledby="modalTitleId"
+            aria-hidden="true"
+        >
+            <div
+                class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+                role="document"
+            >
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitleId">
+                            Cerrar Sesión
+                        </h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body" >
+                        <div style="text-align: center;">
+                            <img id="modal_CerrarSesion_userImage" style="height:10ch;width:10ch;border-radius:100%; margin:2%;" src="https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600nw-1095249842.jpg">
+                        </div>
+                        <lablel>Username:</lablel>
+                        <input disabled type="text" class="form-control" id="modal_CerrarSesion_userName"/ placeholder="user">
+                    </div>
+                    <div class="modal-footer">
+                        <button id="modal_CerrarSesion_btn_Cerrar_Sesion" type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                            Cerrar Sesion
+                        </button>
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal" >
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="../controllers_front/stats.js"></script>
 
     </body>
 </html>

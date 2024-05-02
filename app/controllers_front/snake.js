@@ -1,4 +1,39 @@
 
+PlayersCount()
+function PlayersCount(){
+    if (window.sessionStorage.length != 2) window.location.href=("http://localhost:3000/home");
+    if (window.sessionStorage.length == 1) {
+        let player1= JSON.parse(sessionStorage.getItem("player1"));
+        if (player1==null) {
+                player1= JSON.parse(sessionStorage.getItem("player2"));
+                sessionStorage.setItem("player1", JSON.stringify(player1));
+                sessionStorage.removeItem("player2");
+                document.getElementById("navbar_player2").innerHTML='<a href="#" id="navbar_player2" style="margin-left: 1cap;"><br><i class="fas fa-user-circle" role="button" style="font-size:36px; color: #FFF4CD; margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#loginModal">Player2</i><br></a>'
+            }
+        document.getElementById("navbar_player1").innerHTML='<a id="navbar_player1" style="margin-left: 1cap;"><br><i role="button" onclick=changeModal("player1") class="fas" style="font-size:36px; color: #FFF4CD; margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#CerrarSesion" ><img style="height:2ch;width:2ch;border-radius:100%;" src="'+player1.img+'">'+player1.nombre+'</i><br></a>'
+        document.getElementById("navbar_player2").innerHTML='<a href="#" id="navbar_player2" style="margin-left: 1cap;"><br><i class="fas fa-user-circle" role="button" style="font-size:36px; color: #FFF4CD; margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#loginModal">Player2</i><br></a>'
+
+    }else if (window.sessionStorage.length == 0){
+        document.getElementById("navbar_player1").innerHTML='<a href="#" id="navbar_player1" style="margin-left: 1cap;"><br><i class="fas fa-user-circle" role="button" style="font-size:36px; color: #FFF4CD; margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#loginModal">Player1</i><br></a>'
+        document.getElementById("navbar_player2").innerHTML='<a href="#" id="navbar_player2" style="margin-left: 1cap;"><br><i class="fas fa-user-circle" role="button" style="font-size:36px; color: #FFF4CD; margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#loginModal">Player2</i><br></a>'
+    }
+    if (window.sessionStorage.length == 2) {
+        let player1= JSON.parse(sessionStorage.getItem("player1"));
+        let player2= JSON.parse(sessionStorage.getItem("player2"));
+        document.getElementById("navbar_player1").innerHTML='<a id="navbar_player1" style="margin-left: 1cap;"><br><i role="button" onclick=changeModal("player1") class="fas" style="font-size:36px; color: #FFF4CD; margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#CerrarSesion"><img style="height:2ch;width:2ch;border-radius:100%;" src="'+player1.img+'">'+player1.nombre+'</i><br></a>'
+        document.getElementById("navbar_player2").innerHTML='<a id="navbar_player2" style="margin-left: 1cap;"><br><i role="button" onclick=changeModal("player2") class="fas" style="font-size:36px; color: #FFF4CD; margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#CerrarSesion"><img style="height:2ch;width:2ch;border-radius:100%;" src="'+player2.img+'">'+player2.nombre+'</i><br></a>'
+    }
+}
+function changeModal(player){
+    document.getElementById("modal_CerrarSesion_userImage").src= JSON.parse(sessionStorage.getItem(player)).img
+    document.getElementById("modal_CerrarSesion_userName").value= JSON.parse(sessionStorage.getItem(player)).nombre
+    document.getElementById("modal_CerrarSesion_btn_Cerrar_Sesion").onclick= function (){
+            sessionStorage.removeItem(player);
+            PlayersCount()
+        }
+}
+
+
 let table = document.getElementById("table")
 let map=[
     ["_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_","_"],
@@ -78,7 +113,6 @@ function MoveSnake(x,y,Player) {
     let newX=snake[0].x+x
     let newY=snake[0].y-y
     if (newX<0||newY<0||newX>map[0].length-1||newY>map.length-1){ if(!GameOver)GameOver=true; return Player}
-    console.log(map[newY][newX])
     if (map[newY][newX].toUpperCase()=="S1"||map[newY][newX].toUpperCase()=="S2"){if(!GameOver)GameOver=true; return Player}
     map[snake[snake.length-1].y][snake[snake.length-1].x]="_"
     snake.unshift(new Snake(newX,newY))
@@ -105,7 +139,7 @@ function refreshMap(){
     table.innerHTML=htmlString
 }
 document.addEventListener('keydown', function(e) {
-    console.log(e.code.toUpperCase())
+    //console.log(e.code.toUpperCase())
     switch ((e.code).toUpperCase()){
     //Player1
         case 'KEYW':
@@ -226,16 +260,62 @@ function Start(){
     }else{
         if (P1==loser){
         console.log("Pierde: Player1")
-        alert("Gano: Player2")
+        EndOfGame(JSON.parse(sessionStorage.getItem("player2")),P2,JSON.parse(sessionStorage.getItem("player1")),P1)
+        clearInterval(interval)
     }
         if (P2==loser){
             console.log("Pierde: Player2")
-            alert("Gano: Player1")
+            EndOfGame(JSON.parse(sessionStorage.getItem("player1")),P1,JSON.parse(sessionStorage.getItem("player2")),P2)
+            clearInterval(interval)
         }
-    clearInterval(interval)
+    
     document.getElementById("body").style="background-color: #FFF4CD;Overflow: auto"
     document.getElementById("btn_start").hidden=false;
 
 }
 }, speed_v);
+}
+let ScoreTable = [["Ronda","Winer","Looser"]]
+function EndOfGame(winer,Winer_player,looser,Looser_player){
+    let winer_size = Winer_player.snake.length
+    let looser_size = Looser_player.snake.length
+    ScoreTable.push([ScoreTable.length,winer.nombre+"("+winer_size+")",looser.nombre+"("+looser_size+")"])
+    alert("Gano: "+winer.nombre+ "con "+winer_size);
+    winer.ScoreTable.push(["Snake_"+(ScoreTable.length-1),winer.nombre+"("+winer_size+")",looser.nombre+"("+looser_size+")"])
+    looser.ScoreTable.push(["Snake_"+(ScoreTable.length-1),winer.nombre+"("+winer_size+")",looser.nombre+"("+looser_size+")"])
+    winer.Wins+=1
+    looser.Losses+=1
+    winer.Matches+=1
+    looser.Matches+=1
+    winer.Score+= winer_size
+    sessionStorage.setItem("player"+Winer_player.id,JSON.stringify(winer))
+    sessionStorage.setItem("player"+Looser_player.id,JSON.stringify(looser))
+    guardarScore(winer,"PUT")
+    guardarScore(looser,"PUT")
+    refreshScoreTable()
+}
+
+function guardarScore(player,method){
+    let xhr = new XMLHttpRequest();
+    xhr.open(method,"http://localhost:3000/admin/api/users");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.setRequestHeader("x-auth", "admin");
+    xhr.send(JSON.stringify(player));
+    /* xhr.onload = function (){
+        console.log( xhr.responseText);
+    } */
+}
+refreshScoreTable()
+function refreshScoreTable(){
+    let Socore=document.getElementById("SocreTable")
+    let htmlString=""
+    for (let i = 0; i < ScoreTable.length; i++) {
+        //table.insertAdjacentHTML("beforeend", '<tr>')
+        htmlString+='<tr style="border: black 2px solid;">'
+        for (let j = 0; j < ScoreTable[i].length; j++) {
+            htmlString+='<td style="border: gray 1px solid;text-align: center;" >'+ScoreTable[i][j]+'</td>'
+        }
+        htmlString+='</tr>'
+    }   
+    Socore.innerHTML=htmlString
 }

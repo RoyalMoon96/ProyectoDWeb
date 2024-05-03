@@ -1,7 +1,7 @@
 PlayersCount()
 function PlayersCount(){
     if (window.sessionStorage.length > 2) {alert("Se ha producido un error"); window.location.href=("http://localhost:3000/home");}
-    if (window.sessionStorage.length < 1) {alert("Inicia al menos una sesión"); window.location.href=("http://localhost:3000/home");}
+    //if (window.sessionStorage.length < 1) {alert("Inicia al menos una sesión"); window.location.href=("http://localhost:3000/home");}
     if (window.sessionStorage.length == 1) {
         let player1= JSON.parse(sessionStorage.getItem("player1"));
         if (player1==null) {

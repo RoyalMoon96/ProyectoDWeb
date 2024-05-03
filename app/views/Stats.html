@@ -68,37 +68,41 @@
             <h1 style="text-align: center">Estadísticas</h1>
             <table style="margin: 5%;align-self: center;width:90%;" >
                 <tr style="text-align: center;">
-                    <td >Player1</td>
-                    <td>Player2</td>
+                    <td id="Name_player1" >Player1</td>
+                    <td id="Name_player2">Player2</td>
                 </tr>
                 <tr>
-                    <td>Wins: </td>
-                    <td>Wins: </td>
+                    <td id="Score_player1">Score: </td>
+                    <td id="Score_player2">Score: </td>
                 </tr>
                 <tr>
-                    <td>Losses: </td>
-                    <td>Losses: </td>
+                    <td id="Wins_player1">Wins: </td>
+                    <td id="Wins_player2">Wins: </td>
                 </tr>
                 <tr>
-                    <td>Matches: </td>
-                    <td>Matches: </td>
+                    <td id="Losses_player1">Losses: </td>
+                    <td id="Losses_player2">Losses: </td>
                 </tr>
                 <tr>
-                    <td>Score: </td>
-                    <td>Score: </td>
+                    <td id="Matches_player1">Matches: </td>
+                    <td id="Matches_player2">Matches: </td>
+                </tr>
+                <tr>
+                    <td id="ScoreTable_player1"></td>
+                    <td id="ScoreTable_player2"></td>
                 </tr>
             </table>
             <br>
         </div>
 
-
+        
         <!-- Modal de Inicio de Sesión -->
         <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" id="login_close_btn" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form>
@@ -120,7 +124,7 @@
                                     <label class="form-check-label" for="rememberMe">Recordar</label>
                                 </div>
                                 <div style="text-align: center;">
-                                    <button type="submit" class="btn btn-primary">Login</button>
+                                    <button type="button" onclick=FindPlayer() class="btn btn-primary">Login</button>
                                 </div>
                             </div>
                         </form>
@@ -131,6 +135,8 @@
                 </div>
             </div>
         </div>
+
+
 
 
         <!-- Modal de Registro de Usuarios -->

@@ -94,3 +94,52 @@ function unlock(){
     Game_Conecta4.parentNode.style=""
 }
 
+function Registrarse(){
+    let name= document.getElementById("registro_Username").value;
+    let email= document.getElementById("registro_email").value;
+    let pass= document.getElementById("registro_password").value;
+    let pass2= document.getElementById("registro_password_2").value;
+    let imageURL= document.getElementById("registro_img").value;
+    if (pass!=pass2){alert("el password debe ser el mismo ");return false;}
+    let xhr = new XMLHttpRequest();
+    let flag=true;
+    let url = "http://localhost:3000/api/users?correo="+email
+    xhr.open("GET",url);
+    xhr.send();
+    xhr.onload = function (){
+        if (xhr.status != 200) {
+            alert(xhr.status + ": " + xhr.statusText);
+        } else{
+            response = xhr.responseText
+            if (response=="Not Found" && flag){
+                flag = false
+                let newUser = {
+                    nombre: name,
+                    correo: email,
+                    pass: pass2,
+                    img: imageURL,
+                    Wins: 0,
+                    Losses:0,
+                    Matches: 0,
+                    Score: 0,
+                    ScoreTable: [["Ronda", "Winer", "Looser"]]
+                };
+                //guardarUsuario(newUser,'POST')
+                let newxhr = new XMLHttpRequest();
+                newxhr.open('POST',"http://localhost:3000/admin/api/users");
+                newxhr.setRequestHeader("Content-Type", "application/json");
+                newxhr.setRequestHeader("x-auth", "admin");
+                newxhr.send(JSON.stringify(newUser));
+                document.getElementById('registro_btn_Close').click()
+                return true;
+            }else if(flag){alert("el usuario ya existe"+response)}
+        }
+    } 
+}
+function guardarUsuario(player,method){
+    let xhr = new XMLHttpRequest();
+    xhr.open(method,"http://localhost:3000/admin/api/users");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.setRequestHeader("x-auth", "admin");
+    xhr.send(JSON.stringify(player));
+}

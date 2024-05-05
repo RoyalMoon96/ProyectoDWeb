@@ -156,30 +156,30 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="registroModalLabel">Registrarse</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" id="registro_btn_Close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form>            
                             <div class="row mb-3">
-                                <div class="col-6">
-                                    <input type="text" class="form-control" placeholder="Nombre(s)" required>
-                                </div>
-                                <div class="col-6">
-                                    <input type="text" class="form-control" placeholder="Apellidos" required>
+                                <div class="mb-3">
+                                    <input id="registro_Username" type="text" class="form-control" placeholder="Username" required>
                                 </div>
                             </div>
                             
                             <div class="mb-3">
-                                <input type="email" class="form-control" placeholder="Tu correo electrónico" required>
+                                <input type="text" id="registro_img" class="form-control" placeholder="url imagen perfil" required>
                             </div>
                             <div class="mb-3">
-                                <input type="password" class="form-control" placeholder="Contraseña" required>
+                                <input type="email" id="registro_email" class="form-control" placeholder="Tu correo electrónico" required>
                             </div>
                             <div class="mb-3">
-                                <input type="password" class="form-control" placeholder="Confirmar contraseña" required>
+                                <input type="password" id="registro_password" class="form-control" placeholder="Contraseña" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="password" id="registro_password_2" class="form-control" placeholder="Confirmar contraseña" required>
                             </div>
                             <div style="text-align: center;">
-                                <button type="submit" class="btn btn-success">Registrarse</button>
+                                <button type="button" id="registro_btn_Registrarse" onclick=Registrarse() class="btn btn-success">Registrarse</button>
                             </div>
                         </form>
                     </div>

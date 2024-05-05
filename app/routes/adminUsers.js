@@ -14,6 +14,29 @@ mongoose.connect(mongoConnection).then(function(){
     User = mongoose.models['users']
 });
 
+router.post('/', (req, res) => {
+    console.log("Guardando usuario...");
+    // Información que va a tener nuestro nuevo registro
+    let newUser = {
+        nombre: req.body.nombre,
+        correo: req.body.correo,
+        pass: req.body.pass,
+        img: req.body.img,
+        Wins: 0,
+        Losses:0,
+        Matches: 0,
+        Score: 0,
+        ScoreTable: [["Ronda", "Winer", "Looser"]]
+    };
+    // A partir de la información y el modelo, hacemos un usuario
+    let user = User(newUser);
+    // Guardamos el usuario en la BD (OJO, es asíncrono)
+    user.save().then((doc) => {
+        console.log("Usuario creado: " + doc);
+        res.send('Usuario creado exitosamente: ' + doc);
+    });
+});
+
 
 
 router.put('/', (req, res) => {

@@ -15,12 +15,18 @@ mongoose.connect(mongoConnection).then(function(){
 
     router.get('/', (req, res) => {
         console.log('Consultando Usuarios');
-        users = User.find({
-            correo:req.query.correo, 
-            pass:req.query.pass, 
-        }).then((users) => {res.send(users);})
-        //console.table(products);
-        
+        let password = req.query.pass
+        if (password==undefined||password==null){
+            users = User.find({
+                correo:req.query.correo
+            }).then((users) => {try{res.send(users[0].nombre)}catch{res.send("Not Found")};
+            })
+        }else{
+            users = User.find({
+                correo:req.query.correo, 
+                pass:req.query.pass, 
+            }).then((users) => {res.send(users);})
+        }        
     })
 
 /* 

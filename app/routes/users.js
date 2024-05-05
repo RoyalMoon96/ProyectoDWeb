@@ -25,7 +25,7 @@ mongoose.connect(mongoConnection).then(function(){
             users = User.find({
                 correo:req.query.correo, 
                 pass:req.query.pass, 
-            }).then((users) => {res.send(users);})
+            }).then((users) => {try{res.send(users)}catch{res.send("Not Found")};})
         }        
     })
 

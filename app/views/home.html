@@ -187,6 +187,54 @@
             </div>
         </div>
 
+        <!-- Modal de modificar el Usuarios -->
+        <div class="modal fade" id="modificarUserModal" tabindex="-1" aria-labelledby="modificarUserModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modificarUserModalLabel">Modificar User</h5>
+                        <button type="button" id="modificarUser_btn_Close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>            
+                            <div class="row mb-3">
+                                <div class="mb-3 input-group mt-2">
+                                    <input type="password" id="modificarUser_password_Key" class="form-control" placeholder="Contraseña" required>
+                                    <span role="button" id="modificarUser_modificarUserUnlock" class="btn btn-primary input-group-text" onclick="" ><i class="fa-solid fa-pen"></i></span>
+                                </div>
+
+                            </div>
+                                <div class="mb-3">
+                                    <label>Username:</label>
+                                    <input disabled id="modificarUser_Username" type="text" class="form-control" placeholder="Username" required>
+                                </div>
+                            <div class="mb-3">
+                                <label>img:</label>
+                                <input disabled type="text" id="modificarUser_img" class="form-control" placeholder="url imagen perfil" required>
+                            </div>
+                            <div class="mb-3">
+                                <label>Correo: (No modificable)</label>
+                                <input disabled type="email" id="modificarUser_email" class="form-control" placeholder="Tu correo electrónico" required>
+                            </div>
+                            <div class="mb-3">
+                                <label>Contraseña:</label>
+                                <input disabled type="password" id="modificarUser_password" class="form-control" placeholder="Contraseña" required>
+                            </div>
+                            <div class="mb-3">
+                                <label>Confirmar contraseña:</label>
+                                <input disabled type="password" id="modificarUser_password_2" class="form-control" placeholder="Confirmar contraseña" required>
+                            </div>
+                            <div style="text-align: center;">
+                                <button disabled type="button" id="modificarUser_btn_modificarUser" onclick="" class="btn btn-success">Modificar</button>
+                                <button disabled type="button" id="modificarUser_btn_delete" onclick=DeleteUser() class="btn btn-danger">Delete</button> 
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Modal Body Cerrar sesion -->
         <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
         <div
@@ -221,7 +269,11 @@
                             <img id="modal_CerrarSesion_userImage" style="height:10ch;width:10ch;border-radius:100%; margin:2%;" src="https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600nw-1095249842.jpg">
                         </div>
                         <lablel>Username:</lablel>
-                        <input disabled type="text" class="form-control" id="modal_CerrarSesion_userName"/ placeholder="user">
+                        <div class="input-group mt-2">
+                            <input disabled type="text" class="form-control" id="modal_CerrarSesion_userName" placeholder="user">
+                            <span role="button" id="modal_CerrarSesion_modificar" data-bs-toggle="modal" data-bs-target="#modificarUserModal" class="btn btn-primary input-group-text" data-bs-target="#registroModal" onclick="" ><i class="fa-solid fa-user-gear"></i></span>
+                        </div>
+                        
                     </div>
                     <div class="modal-footer">
                         <button id="modal_CerrarSesion_btn_Cerrar_Sesion" type="button" class="btn btn-danger" data-bs-dismiss="modal">

@@ -28,10 +28,18 @@ function PlayersCount(){
 function changeModal(player){
     document.getElementById("modal_CerrarSesion_userImage").src= JSON.parse(sessionStorage.getItem(player)).img
     document.getElementById("modal_CerrarSesion_userName").value= JSON.parse(sessionStorage.getItem(player)).nombre
+    document.getElementById("modificarUser_modificarUserUnlock").onclick=function(){modificarUserUnlock(player)}
     document.getElementById("modal_CerrarSesion_btn_Cerrar_Sesion").onclick= function (){
             sessionStorage.removeItem(player);
             PlayersCount()
         }
+    let p= JSON.parse(sessionStorage.getItem(player));
+    document.getElementById("modificarUser_Username").value=p.nombre;
+    document.getElementById("modificarUser_img").value=p.img;
+    document.getElementById("modificarUser_email").value=p.correo;
+    document.getElementById("modificarUser_password_Key").value=""
+    modificarUserUnlock(player)
+
 }
 
 function FindPlayer(){
@@ -142,4 +150,47 @@ function guardarUsuario(player,method){
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader("x-auth", "admin");
     xhr.send(JSON.stringify(player));
+}
+
+function modificarUserUnlock(p){
+    let player= JSON.parse(sessionStorage.getItem(p));
+    if (document.getElementById("modificarUser_password_Key").value==player.pass){
+        document.getElementById("modificarUser_Username").disabled=false;
+        document.getElementById("modificarUser_img").disabled=false;
+        document.getElementById("modificarUser_password").disabled=false;
+        document.getElementById("modificarUser_password_2").disabled=false;
+        document.getElementById("modificarUser_btn_modificarUser").disabled=false;
+        document.getElementById("modificarUser_btn_delete").disabled=false;
+        document.getElementById("modificarUser_password").value=player.pass;
+        document.getElementById("modificarUser_password_2").value=player.pass;
+        document.getElementById("modificarUser_btn_modificarUser").onclick=function(){modificarUser(p)};
+    }else{
+        document.getElementById("modificarUser_Username").disabled=true;
+        document.getElementById("modificarUser_img").disabled=true;
+        document.getElementById("modificarUser_password").disabled=true;
+        document.getElementById("modificarUser_password_2").disabled=true;
+        document.getElementById("modificarUser_btn_modificarUser").disabled=true;
+        document.getElementById("modificarUser_btn_delete").disabled=true;
+        document.getElementById("modificarUser_password").value="";
+        document.getElementById("modificarUser_password_2").value="";
+    }
+}
+
+function modificarUser(p){
+    let player= JSON.parse(sessionStorage.getItem(p));
+    if (document.getElementById("modificarUser_password").value==document.getElementById("modificarUser_password_2").value){
+        let name = document.getElementById("modificarUser_Username").value;
+        let imageURL=document.getElementById("modificarUser_img").value;
+        let password=document.getElementById("modificarUser_password").value;
+        player.nombre= name
+        player.pass= password
+        player.img= imageURL
+        guardarUsuario(player,'PUT')
+        document.getElementById('modificarUser_btn_Close').click()
+        sessionStorage.setItem(p, JSON.stringify(player))
+        PlayersCount()
+        document.getElementById("modificarUser_password_Key").value=""
+        modificarUserUnlock(player)
+
+    }else {alert("el password debe ser el mismo ");return false;}
 }

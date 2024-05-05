@@ -58,7 +58,6 @@ router.put('/', (req, res) => {
     if(nombre != undefined && correo != undefined && pass != undefined && 
        img != undefined && ScoreTable != undefined && Wins != undefined && 
        Losses != undefined && Matches != undefined && Score != undefined ){
-        
         object_to_update.nombre = nombre
         object_to_update.correo = correo
         object_to_update.pass = pass
@@ -70,7 +69,6 @@ router.put('/', (req, res) => {
         object_to_update.Score = Score
         flag_updated = true;
     }
-
     console.log(id);
     if(flag_updated){
         User.findByIdAndUpdate(id, object_to_update, {new: true}).then((doc) => {

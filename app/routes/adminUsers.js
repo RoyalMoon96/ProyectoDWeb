@@ -14,6 +14,29 @@ mongoose.connect(mongoConnection).then(function(){
     User = mongoose.models['users']
 });
 
+router.post('/', (req, res) => {
+    console.log("Guardando usuario...");
+    // Información que va a tener nuestro nuevo registro
+    let newUser = {
+        nombre: req.body.nombre,
+        correo: req.body.correo,
+        pass: req.body.pass,
+        img: req.body.img,
+        Wins: 0,
+        Losses:0,
+        Matches: 0,
+        Score: 0,
+        ScoreTable: [["Ronda", "Winer", "Looser"]]
+    };
+    // A partir de la información y el modelo, hacemos un usuario
+    let user = User(newUser);
+    // Guardamos el usuario en la BD (OJO, es asíncrono)
+    user.save().then((doc) => {
+        console.log("Usuario creado: " + doc);
+        res.send('Usuario creado exitosamente: ' + doc);
+    });
+});
+
 
 
 router.put('/', (req, res) => {
@@ -35,7 +58,6 @@ router.put('/', (req, res) => {
     if(nombre != undefined && correo != undefined && pass != undefined && 
        img != undefined && ScoreTable != undefined && Wins != undefined && 
        Losses != undefined && Matches != undefined && Score != undefined ){
-        
         object_to_update.nombre = nombre
         object_to_update.correo = correo
         object_to_update.pass = pass
@@ -47,7 +69,6 @@ router.put('/', (req, res) => {
         object_to_update.Score = Score
         flag_updated = true;
     }
-
     console.log(id);
     if(flag_updated){
         User.findByIdAndUpdate(id, object_to_update, {new: true}).then((doc) => {
@@ -59,6 +80,16 @@ router.put('/', (req, res) => {
     else{
         res.send("No se ha actualizado");
     }
+});
+
+router.delete('/', (req, res) => {
+    console.log("Eliminando registro...");
+    let id = req.body.id;
+    User.findByIdAndDelete(id).then((doc) => {
+        console.log("Usuario eliminado:");
+        console.log(doc);
+        res.send(doc);
+    }).catch((err) => console.log(err));
 });
 
 

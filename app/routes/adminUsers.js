@@ -82,5 +82,15 @@ router.put('/', (req, res) => {
     }
 });
 
+router.delete('/', (req, res) => {
+    console.log("Eliminando registro...");
+    let id = req.body.id;
+    User.findByIdAndDelete(id).then((doc) => {
+        console.log("Usuario eliminado:");
+        console.log(doc);
+        res.send(doc);
+    }).catch((err) => console.log(err));
+});
+
 
 module.exports = router;

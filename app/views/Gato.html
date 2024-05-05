@@ -26,6 +26,26 @@
             body{
                 background-color: #FFF4CD;
             }
+            .cell{
+                height: 120px;
+                width: 33%;
+                border: 5px solid;
+            }
+            .cell:hover{
+                background-color: rgb(216, 209, 182)
+            }
+            .cell[value="P1"]::before {
+                content: "X";
+                font-size: 70px;
+                font-weight: bold;
+                color: rgb(18, 118, 56);
+            }
+            .cell[value="P2"]::before {
+                content: "O";
+                font-size: 70px;
+                font-weight: bold;
+                color: rgb(32, 43, 158);
+            }
         </style>
     </head>
     <header>
@@ -69,6 +89,7 @@
         <div class="container">
         <div class="row">   
             <div class="col-12 col-md-12 col-lg-6">
+                <h4 id="Turno">Turno de: </h1>
                 <table id="table" style="text-align: center; margin-top:1cap; width: 100%;" border>
                     <tr>
                         <td style="background-color: #dfd9d7; height: 100px;">1,1</td>
@@ -258,7 +279,7 @@
             </div>
         </div>
         
-        <script src="../controllers_front/stats.js"></script>
+        <script src="../controllers_front/gato.js"></script>
 
     </body>
 </html>

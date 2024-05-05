@@ -31,3 +31,101 @@ function changeModal(player){
             PlayersCount()
         }
 }
+
+let tablero = [
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0]
+];
+
+let jugadorActual = "P1";
+let turno = 1;
+
+function marcarCasilla(row, col) {
+    if (tablero[row][col] === 0) {
+        tablero[row][col] = jugadorActual;
+        refreshtab();
+        if (checkWin(jugadorActual)) {
+            alert("Ganador: " + jugadorActual);
+            resetJuego();
+        } else if (turno === 9) {
+            alert("Empate");
+            resetJuego();
+        } else {
+            cambiarJugador();
+        }
+    } else {
+        alert("Esa casilla ya está ocupada");
+    }
+}
+
+function checkWin(jugador) {
+    //Filas
+    for (let i = 0; i < 3; i++) {
+        if (tablero[i][0] === jugador && tablero[i][1] === jugador && tablero[i][2] === jugador) {
+            return true;
+        }
+    }
+    //Columnas
+    for (let i = 0; i < 3; i++) {
+        if (tablero[0][i] === jugador && tablero[1][i] === jugador && tablero[2][i] === jugador) {
+            return true;
+        }
+    }
+    //Diagonales
+    if (tablero[0][0] === jugador && tablero[1][1] === jugador && tablero[2][2] === jugador) {
+        return true;
+    }
+    if (tablero[0][2] === jugador && tablero[1][1] === jugador && tablero[2][0] === jugador) {
+        return true;
+    }
+    return false;
+}
+
+function cambiarJugador() {
+    if (jugadorActual === "P1") {
+        jugadorActual = "P2";
+        document.getElementById("Turno").innerText = "Turno de: Player2";
+    } else {
+        jugadorActual = "P1";
+        document.getElementById("Turno").innerText = "Turno de: Player1";
+    }
+    turno++;
+}
+
+function resetJuego() {
+    tablero = [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+    ];
+    jugadorActual = "P1";
+    turno = 1;
+    document.getElementById("Turno").innerText = "Turno de: Player1";
+    refreshtab();
+}
+
+function refreshtab() {
+    let htmlString = "";
+    for (let i = 0; i < tablero.length; i++) {
+        htmlString += '<tr>';
+        for (let j = 0; j < tablero[i].length; j++) {
+            htmlString += '<td class="cell" id="' + i + 'x' + j + '" value="' + tablero[i][j] + '" onclick="marcarCasilla(' + i + ',' + j + ')"></td>';
+        }
+        htmlString += '</tr>';
+    }
+    document.getElementById('table').innerHTML = htmlString;
+}
+
+refreshtab();
+addEvents();
+
+function addEvents() {
+    for (let i = 0; i < tablero.length; i++) {
+        for (let j = 0; j < tablero[0].length; j++) {
+            document.getElementById(i + 'x' + j).addEventListener('click', function (e) {
+                marcarCasilla(i, j);
+            });
+        }
+    }
+}

@@ -54,6 +54,7 @@ function FindPlayer(){
             alert(xhr.status + ": " + xhr.statusText);
         } else{
             response = JSON.parse(xhr.responseText)
+            if (response.length==0) {alert("Usuario no encontrado"); return false};
             console.log("Encontramos: ", response[0].nombre);
             if (response.length!=0){
                 if (window.sessionStorage.length == 1) 

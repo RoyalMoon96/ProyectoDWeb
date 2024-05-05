@@ -280,7 +280,7 @@ function EndOfGame(winer,Winer_player,looser,Looser_player){
     let winer_size = Winer_player.snake.length
     let looser_size = Looser_player.snake.length
     ScoreTable.push([ScoreTable.length,winer.nombre+"("+winer_size+")",looser.nombre+"("+looser_size+")"])
-    alert("Gano: "+winer.nombre+ "con "+winer_size);
+    alert("Gano: "+winer.nombre+ " con "+winer_size);
     winer.ScoreTable.push(["Snake_"+(ScoreTable.length-1),winer.nombre+"("+winer_size+")",looser.nombre+"("+looser_size+")"])
     looser.ScoreTable.push(["Snake_"+(ScoreTable.length-1),winer.nombre+"("+winer_size+")",looser.nombre+"("+looser_size+")"])
     winer.Wins+=1

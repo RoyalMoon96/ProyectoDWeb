@@ -106,15 +106,16 @@ function resetJuego() {
 }
 
 function refreshtab() {
-    let htmlString = "";
+    const table = document.getElementById('table');
+    let html = '';
     for (let i = 0; i < tablero.length; i++) {
-        htmlString += '<tr>';
+        html += '<tr>';
         for (let j = 0; j < tablero[i].length; j++) {
-            htmlString += '<td class="cell" id="' + i + 'x' + j + '" value="' + tablero[i][j] + '" onclick="marcarCasilla(' + i + ',' + j + ')"></td>';
+            html += `<td class="cell" value="${tablero[i][j]}" onclick="marcarCasilla(${i}, ${j})"></td>`;
         }
-        htmlString += '</tr>';
+        html += '</tr>';
     }
-    document.getElementById('table').innerHTML = htmlString;
+    table.innerHTML = html;
 }
 
 refreshtab();

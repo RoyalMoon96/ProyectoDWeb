@@ -48,13 +48,21 @@ let tablero = [
 
 let jugadorActual = "P1";
 let turno = 1;
-
+let player1= JSON.parse(sessionStorage.getItem("player1"));
+let player2= JSON.parse(sessionStorage.getItem("player2"));
 function marcarCasilla(row, col) {
     if (tablero[row][col] === 0) {
         tablero[row][col] = jugadorActual;
         refreshtab();
         if (checkWin(jugadorActual)) {
-            alert("Ganador: " + jugadorActual);
+            if (jugadorActual=="P1"){
+                console.log("Gana: Player1")
+                EndOfGame(JSON.parse(sessionStorage.getItem("player1")),"player1",JSON.parse(sessionStorage.getItem("player2")),"player2")
+            }
+            else{
+                console.log("Gana: Player2")
+                EndOfGame(JSON.parse(sessionStorage.getItem("player2")),"player2",JSON.parse(sessionStorage.getItem("player1")),"player1")
+            }
             resetJuego();
         } else if (turno === 9) {
             alert("Empate");
@@ -141,8 +149,8 @@ function EndOfGame(winer,Winer_player,looser,Looser_player){
     winer.Matches+=1
     looser.Matches+=1
     winer.Score+= winer_p
-    sessionStorage.setItem("player"+Winer_player.id,JSON.stringify(winer))
-    sessionStorage.setItem("player"+Looser_player.id,JSON.stringify(looser))
+    sessionStorage.setItem(Winer_player,JSON.stringify(winer))
+    sessionStorage.setItem(Looser_player,JSON.stringify(looser))
     guardarScore(winer,"PUT")
     guardarScore(looser,"PUT")
     refreshScoreTable()

@@ -158,6 +158,31 @@ function seleccion(col,player) {
     addToken(col,player)
 }
 
+let ScoreTable = [["Ronda","Winer","Looser"]]
+
+function guardarScore(player,method){
+    let xhr = new XMLHttpRequest();
+    xhr.open(method,"http://localhost:3000/admin/api/users");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.setRequestHeader("x-auth", "admin");
+    xhr.send(JSON.stringify(player));
+}
+
+refreshScoreTable()
+function refreshScoreTable(){
+    let Score=document.getElementById("ScoreTable")
+    let htmlString=""
+    for (let i = 0; i < ScoreTable.length; i++) {
+        //table.insertAdjacentHTML("beforeend", '<tr>')
+        htmlString+='<tr style="border: black 2px solid;">'
+        for (let j = 0; j < ScoreTable[i].length; j++) {
+            htmlString+='<td style="border: gray 1px solid;text-align: center;" >'+ScoreTable[i][j]+'</td>'
+        }
+        htmlString+='</tr>'
+    }   
+    Score.innerHTML=htmlString
+}
+
 function guardarUsuario(player,method){
     let xhr = new XMLHttpRequest();
     xhr.open(method,"http://localhost:3000/admin/api/users");

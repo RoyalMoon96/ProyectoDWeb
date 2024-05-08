@@ -20,9 +20,7 @@
             body{
                 background-color: #FFF4CD;
             }
-            td{
-                border: 1px solid
-            }
+
         </style>
     </head>
     <header>
@@ -65,27 +63,29 @@
     <body>
         <div style="border-radius:4ch;width:90%;margin: 5%;align-items: center; background-color: #ffb8473f;">
             <br>
-            <h1 style="text-align: center">Estadísticas</h1>
-            <table style="margin: 5%;align-self: center;width:90%;" >
+            <h1 style="text-align: center;">
+                <span style="border-radius: 40px; background-color: #ffb847; background-size: contain; padding-inline: 10px;">Estadísticas</span>
+            </h1>
+            <table style="margin-inline: 5%; align-self: center; width:90%;">
                 <tr style="text-align: center;">
-                    <td id="Name_player1" >Player1</td>
-                    <td id="Name_player2">Player2</td>
+                    <td style="border-radius: 40px; background-color: #ffb847;"><b id="Name_player1">Player1</b></td>
+                    <td style="border-radius: 40px; background-color: #ffb847;"><b id="Name_player2">Player1</b></td>
                 </tr>
                 <tr>
-                    <td id="Score_player1">Score: </td>
-                    <td id="Score_player2">Score: </td>
+                    <td style="border-top-left-radius: 10px; border-top-right-radius: 10px; background-color: #fccb7c;"><tt id="Score_player1" style="margin-left: 5%;">Score:</tt></td>
+                    <td style="border-top-left-radius: 10px; border-top-right-radius: 10px; background-color: #fccb7c;"><tt id="Score_player2" style="margin-left: 5%;">Score:</tt></td>
                 </tr>
                 <tr>
-                    <td id="Wins_player1">Wins: </td>
-                    <td id="Wins_player2">Wins: </td>
+                    <td style="background-color: #fccb7c;"><tt id="Wins_player1" style="margin-left: 5%;">Wins:</tt></td>
+                    <td style="background-color: #fccb7c;"><tt id="Wins_player2" style="margin-left: 5%;">Wins:</tt></td>
                 </tr>
                 <tr>
-                    <td id="Losses_player1">Losses: </td>
-                    <td id="Losses_player2">Losses: </td>
+                    <td style="background-color: #fccb7c;"><tt id="Losses_player1" style="margin-left: 5%;">Losses:</tt></td>
+                    <td style="background-color: #fccb7c;"><tt id="Losses_player2" style="margin-left: 5%;">Losses:</tt></td>
                 </tr>
                 <tr>
-                    <td id="Matches_player1">Matches: </td>
-                    <td id="Matches_player2">Matches: </td>
+                    <td style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; background-color: #fccb7c;"><tt id="Matches_player1" style="margin-left: 5%;">Matches:</tt></td>
+                    <td style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; background-color: #fccb7c;"><tt id="Matches_player2" style="margin-left: 5%;">Matches:</tt></td>
                 </tr>
                 <tr>
                     <td id="ScoreTable_player1"></td>
@@ -94,7 +94,6 @@
             </table>
             <br>
         </div>
-
 
         <!-- Modal de Inicio de Sesión -->
         <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -132,7 +131,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- Modal de Registro de Usuarios -->
         <div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
@@ -273,18 +271,19 @@
         
 
 
-
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
             crossorigin="anonymous"
         ></script>
-        <script src="../controllers_front/stats.js"></script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"
         ></script>
         <script src="https://kit.fontawesome.com/39f78fcbb4.js" crossorigin="anonymous"></script>
+        <script  src="../controllers_front/stats.js"></script>
     </body>
 </html>
+
+

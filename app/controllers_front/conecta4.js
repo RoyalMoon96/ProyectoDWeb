@@ -97,7 +97,6 @@ for(let i=0; i<tablero[0].length; i++) {
         refreshtab()
 }
     if (!continuar) {
-        alert("Ganador: "+player);
         tablero = [
         [0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0],
@@ -106,10 +105,14 @@ for(let i=0; i<tablero[0].length; i++) {
         [0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0]
         ]
+        let player1= JSON.parse(sessionStorage.getItem("player1"));
+        let player2= JSON.parse(sessionStorage.getItem("player2"));
         if (player=="P1"){
+            alert("Ganador: "+player1.nombre);
             EndOfGame(JSON.parse(sessionStorage.getItem("player1")),"player1",JSON.parse(sessionStorage.getItem("player2")),"player2")
         }
         else{
+            alert("Ganador: "+player2.nombre);
             EndOfGame(JSON.parse(sessionStorage.getItem("player2")),"player2",JSON.parse(sessionStorage.getItem("player1")),"player1")
         }
         refreshtab()
@@ -152,12 +155,14 @@ function addEvents(){
             })
         }
     }
+    let player1= JSON.parse(sessionStorage.getItem("player1"));
+    let player2= JSON.parse(sessionStorage.getItem("player2"));
     if (player=="P1"){
         player="P2"
-        document.getElementById("Turno").innerText="Turno de: Player2"
+        document.getElementById("Turno").innerText = "Turno de: "+player2.nombre;
     }else{
         player="P1" 
-        document.getElementById("Turno").innerText="Turno de: Player1"
+        document.getElementById("Turno").innerText = "Turno de: "+player1.nombre;
 }
 }
 function seleccion(col,player) {

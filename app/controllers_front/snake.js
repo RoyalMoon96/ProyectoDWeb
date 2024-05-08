@@ -42,6 +42,10 @@ function changeModal(player){
 
 }
 
+let player1= JSON.parse(sessionStorage.getItem("player1"));
+let player2= JSON.parse(sessionStorage.getItem("player2"));
+document.getElementById("SP1").innerHTML=player1.nombre;
+document.getElementById("SP2").innerHTML=player2.nombre;
 
 let table = document.getElementById("table")
 let map=[
@@ -289,7 +293,11 @@ function EndOfGame(winer,Winer_player,looser,Looser_player){
     let winer_size = Winer_player.snake.length
     let looser_size = Looser_player.snake.length
     ScoreTable.push([ScoreTable.length,winer.nombre+"("+winer_size+")",looser.nombre+"("+looser_size+")"])
-    alert("Gano: "+winer.nombre+ " con "+winer_size);
+    if (winer_size==1){
+        alert("Gano: "+winer.nombre+ " con "+winer_size+ " "+"punto");
+    }else{
+        alert("Gano: "+winer.nombre+ " con "+winer_size+ " "+"puntos");
+    }
     winer.ScoreTable.push(["Snake_"+(ScoreTable.length-1),winer.nombre+"("+winer_size+")",looser.nombre+"("+looser_size+")"])
     looser.ScoreTable.push(["Snake_"+(ScoreTable.length-1),winer.nombre+"("+winer_size+")",looser.nombre+"("+looser_size+")"])
     winer.Wins+=1

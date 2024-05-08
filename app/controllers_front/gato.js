@@ -46,21 +46,26 @@ let tablero = [
     [0, 0, 0]
 ];
 
-let jugadorActual = "P1";
+let jugadorActual = "P2";
 let turno = 1;
+
 let player1= JSON.parse(sessionStorage.getItem("player1"));
 let player2= JSON.parse(sessionStorage.getItem("player2"));
+
+document.getElementById("SP1").innerHTML=player1.nombre;
+document.getElementById("SP2").innerHTML=player2.nombre;
+
 function marcarCasilla(row, col) {
     if (tablero[row][col] === 0) {
         tablero[row][col] = jugadorActual;
         refreshtab();
         if (checkWin(jugadorActual)) {
             if (jugadorActual=="P1"){
-                console.log("Gana: Player1")
+                console.log("Gana: "+player1.nombre)
                 EndOfGame(JSON.parse(sessionStorage.getItem("player1")),"player1",JSON.parse(sessionStorage.getItem("player2")),"player2")
             }
             else{
-                console.log("Gana: Player2")
+                console.log("Gana: "+player2.nombre)
                 EndOfGame(JSON.parse(sessionStorage.getItem("player2")),"player2",JSON.parse(sessionStorage.getItem("player1")),"player1")
             }
             resetJuego();
@@ -97,14 +102,14 @@ function checkWin(jugador) {
     }
     return false;
 }
-
+cambiarJugador();
 function cambiarJugador() {
     if (jugadorActual === "P1") {
         jugadorActual = "P2";
-        document.getElementById("Turno").innerText = "Turno de: Player2";
+        document.getElementById("Turno").innerText = "Turno de: "+player2.nombre;
     } else {
         jugadorActual = "P1";
-        document.getElementById("Turno").innerText = "Turno de: Player1";
+        document.getElementById("Turno").innerText = "Turno de: "+player1.nombre;
     }
     turno++;
 }
@@ -117,7 +122,7 @@ function resetJuego() {
     ];
     jugadorActual = "P1";
     turno = 1;
-    document.getElementById("Turno").innerText = "Turno de: Player1";
+    document.getElementById("Turno").innerText = "Turno de: "+player1.nombre;
     refreshtab();
 }
 

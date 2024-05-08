@@ -110,6 +110,11 @@ function Registrarse(){
     let pass= document.getElementById("registro_password").value;
     let pass2= document.getElementById("registro_password_2").value;
     let imageURL= document.getElementById("registro_img").value;
+    if (name==""){alert("Ingresa el usuario");return false;}
+    if (imageURL==""){alert("Ingresa un url de una imagen");return false;}
+    if (email==""){alert("Ingresa el correo");return false;}
+    if (!(email.includes("@")&&email.includes("."))){alert("correo no valido");return false;}
+    if (pass==""){alert("Ingresa el password");return false;}
     if (pass!=pass2){alert("el password debe ser el mismo ");return false;}
     let xhr = new XMLHttpRequest();
     let flag=true;
@@ -140,18 +145,23 @@ function Registrarse(){
                 newxhr.setRequestHeader("Content-Type", "application/json");
                 newxhr.setRequestHeader("x-auth", "admin");
                 newxhr.send(JSON.stringify(newUser));
-                newxhr.onload = function (){
+                newxhr.onloadend = function (){
                 if (newxhr.status != 200) {
                         alert(newxhr.status + ": " + newxhr.statusText);
                     } else{
-                        if (window.sessionStorage.length == 1) 
-                            sessionStorage.setItem("player2", JSON.stringify(newUser));
-                        if (window.sessionStorage.length == 0) 
-                            sessionStorage.setItem("player1", JSON.stringify(newUser));
+                        
+                        document.getElementById("email").value= newUser.correo;
+                        document.getElementById("password").value = newUser.pass;
+                        FindPlayer();
                         PlayersCount();
                     }
                 }
                 document.getElementById('registro_btn_Close').click()
+                document.getElementById("registro_Username").value="";
+                document.getElementById("registro_email").value="";
+                document.getElementById("registro_password").value="";
+                document.getElementById("registro_password_2").value="";
+                document.getElementById("registro_img").value="";
                 return true;
             }else if(flag){alert("el usuario ya existe"+response)}
         }
@@ -196,6 +206,9 @@ function modificarUser(p){
         let name = document.getElementById("modificarUser_Username").value;
         let imageURL=document.getElementById("modificarUser_img").value;
         let password=document.getElementById("modificarUser_password").value;
+        if (name==""){alert("Ingresa el usuario");return false;}
+        if (imageURL==""){alert("Ingresa un url de una imagen");return false;}
+        if (password==""){alert("Ingresa el password");return false;}
         player.nombre= name
         player.pass= password
         player.img= imageURL

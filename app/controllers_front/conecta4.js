@@ -206,12 +206,23 @@ function refreshScoreTable(){
     Score.innerHTML=htmlString
 }
 
+document.getElementById("btn_modificarUser_img").hidden=true;
+document.getElementById("modificarUser_btn_modificarUser").hidden=false;
+document.getElementById("modificarUser_btn_delete").hidden=false;
 function guardarUsuario(player,method){
+    document.getElementById("btn_modificarUser_img").hidden=false;
+    document.getElementById("modificarUser_btn_modificarUser").hidden=true;
+    document.getElementById("modificarUser_btn_delete").hidden=true;
     let xhr = new XMLHttpRequest();
     xhr.open(method,"http://localhost:3000/admin/api/users");
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader("x-auth", "admin");
     xhr.send(JSON.stringify(player));
+    xhr.onloadend = function(){
+        document.getElementById("btn_modificarUser_img").hidden=true;
+        document.getElementById("modificarUser_btn_modificarUser").hidden=false;
+        document.getElementById("modificarUser_btn_delete").hidden=false;
+    }
 }
 
 function modificarUserUnlock(p){
@@ -260,6 +271,9 @@ function modificarUser(p){
 }
 
 function DeleteUser(p){
+    document.getElementById("btn_modificarUser_img").hidden=false;
+    document.getElementById("modificarUser_btn_modificarUser").hidden=true;
+    document.getElementById("modificarUser_btn_delete").hidden=true;
     let player= JSON.parse(sessionStorage.getItem(p));
     if (player._id == undefined || player._id == null){return false}
     let xhr = new XMLHttpRequest();
@@ -270,6 +284,11 @@ function DeleteUser(p){
         "id": player._id
     }
     xhr.send(JSON.stringify(Del_user));
+    xhr.onloadend=function(){
+        document.getElementById("btn_modificarUser_img").hidden=true;
+        document.getElementById("modificarUser_btn_modificarUser").hidden=false;
+        document.getElementById("modificarUser_btn_delete").hidden=false;
+    }
     sessionStorage.removeItem(p)
     PlayersCount()
     document.getElementById("modificarUser_btn_Close").click();

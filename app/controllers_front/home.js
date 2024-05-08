@@ -42,9 +42,14 @@ function changeModal(player){
 
 }
 
+
+document.getElementById("btn_login_img").hidden=true;
+document.getElementById("btn_login").hidden=false;
 function FindPlayer(){
     let correo = document.getElementById("email").value;
     let password = document.getElementById("password").value;
+    document.getElementById("btn_login_img").hidden=false;
+    document.getElementById("btn_login").hidden=true;
     let xhr = new XMLHttpRequest();
     let url = "http://localhost:3000/api/users?correo="+correo+"&pass="+password
     xhr.open("GET",url);
@@ -66,6 +71,10 @@ function FindPlayer(){
                 document.getElementById("login_close_btn").click();
             }
         }
+    }
+    xhr.onloadend = function() {
+        document.getElementById("btn_login_img").hidden=true;
+        document.getElementById("btn_login").hidden=false;
     }
     PlayersCount()
 }
@@ -104,6 +113,8 @@ function unlock(){
     Game_Conecta4.parentNode.style=""
 }
 
+document.getElementById("btn_registro_img").hidden=true;
+document.getElementById("registro_btn_Registrarse").hidden=false;
 function Registrarse(){
     let name= document.getElementById("registro_Username").value;
     let email= document.getElementById("registro_email").value;
@@ -116,6 +127,8 @@ function Registrarse(){
     if (!(email.includes("@")&&email.includes("."))){alert("correo no valido");return false;}
     if (pass==""){alert("Ingresa el password");return false;}
     if (pass!=pass2){alert("el password debe ser el mismo ");return false;}
+    document.getElementById("btn_registro_img").hidden=false;
+    document.getElementById("registro_btn_Registrarse").hidden=true;
     let xhr = new XMLHttpRequest();
     let flag=true;
     let url = "http://localhost:3000/api/users?correo="+email
@@ -146,7 +159,9 @@ function Registrarse(){
                 newxhr.setRequestHeader("x-auth", "admin");
                 newxhr.send(JSON.stringify(newUser));
                 newxhr.onloadend = function (){
-                if (newxhr.status != 200) {
+                    document.getElementById("btn_registro_img").hidden=true;
+                    document.getElementById("registro_btn_Registrarse").hidden=false;
+                    if (newxhr.status != 200) {
                         alert(newxhr.status + ": " + newxhr.statusText);
                     } else{
                         
@@ -162,17 +177,31 @@ function Registrarse(){
                 document.getElementById("registro_password").value="";
                 document.getElementById("registro_password_2").value="";
                 document.getElementById("registro_img").value="";
+                
+
                 return true;
             }else if(flag){alert("el usuario ya existe"+response)}
         }
     } 
 }
+
+document.getElementById("btn_modificarUser_img").hidden=true;
+document.getElementById("modificarUser_btn_modificarUser").hidden=false;
+document.getElementById("modificarUser_btn_delete").hidden=false;
 function guardarUsuario(player,method){
+    document.getElementById("btn_modificarUser_img").hidden=false;
+    document.getElementById("modificarUser_btn_modificarUser").hidden=true;
+    document.getElementById("modificarUser_btn_delete").hidden=true;
     let xhr = new XMLHttpRequest();
     xhr.open(method,"http://localhost:3000/admin/api/users");
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader("x-auth", "admin");
     xhr.send(JSON.stringify(player));
+    xhr.onloadend = function(){
+        document.getElementById("btn_modificarUser_img").hidden=true;
+        document.getElementById("modificarUser_btn_modificarUser").hidden=false;
+        document.getElementById("modificarUser_btn_delete").hidden=false;
+    }
 }
 
 function modificarUserUnlock(p){
@@ -224,6 +253,9 @@ function modificarUser(p){
 
 
 function DeleteUser(p){
+    document.getElementById("btn_modificarUser_img").hidden=false;
+    document.getElementById("modificarUser_btn_modificarUser").hidden=true;
+    document.getElementById("modificarUser_btn_delete").hidden=true;
     let player= JSON.parse(sessionStorage.getItem(p));
     if (player._id == undefined || player._id == null){return false}
     let xhr = new XMLHttpRequest();
@@ -234,6 +266,11 @@ function DeleteUser(p){
         "id": player._id
     }
     xhr.send(JSON.stringify(Del_user));
+    xhr.onloadend=function(){
+        document.getElementById("btn_modificarUser_img").hidden=true;
+        document.getElementById("modificarUser_btn_modificarUser").hidden=false;
+        document.getElementById("modificarUser_btn_delete").hidden=false;
+    }
     sessionStorage.removeItem(p)
     PlayersCount()
     document.getElementById("modificarUser_btn_Close").click();

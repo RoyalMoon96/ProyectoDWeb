@@ -73,7 +73,6 @@
             </nav>
     </header>
     <body>
-
         <div id="Note" class="alert alert-danger" role="alert">
             <strong>2 Player Games:</strong> Tienen que iniciar sesión dos personas
         </div>
@@ -134,6 +133,7 @@
                                 </div>
                                 
                                 <div style="text-align: center;">
+                                    <dotlottie-player id="btn_login_img" style="height:5cap;" src="https://lottie.host/1565d49a-a4d6-4445-a8b5-18f66ddd9695/v2gIP6CLJm.lottie" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
                                     <button type="button" id="btn_login" onclick=FindPlayer() class="btn btn-primary">Login</button>
                                 </div>
                             </div>
@@ -176,6 +176,7 @@
                                 <input type="password" id="registro_password_2" class="form-control" placeholder="Confirmar contraseña" required>
                             </div>
                             <div style="text-align: center;">
+                                <dotlottie-player id="btn_registro_img" style="height:5cap;" src="https://lottie.host/1565d49a-a4d6-4445-a8b5-18f66ddd9695/v2gIP6CLJm.lottie" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
                                 <button type="button" id="registro_btn_Registrarse" onclick=Registrarse() class="btn btn-success">Registrarse</button>
                             </div>
                         </form>
@@ -222,6 +223,7 @@
                                 <input disabled type="password" id="modificarUser_password_2" class="form-control" placeholder="Confirmar contraseña" required>
                             </div>
                             <div style="text-align: center;">
+                                <dotlottie-player id="btn_modificarUser_img" style="height:5cap;" src="https://lottie.host/1565d49a-a4d6-4445-a8b5-18f66ddd9695/v2gIP6CLJm.lottie" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
                                 <button disabled type="button" id="modificarUser_btn_modificarUser" onclick="" class="btn btn-success">Modificar</button>
                                 <button disabled type="button" id="modificarUser_btn_delete" onclick=DeleteUser() class="btn btn-danger">Delete</button> 
                             </div>
@@ -298,5 +300,8 @@
         ></script>
         <script src="https://kit.fontawesome.com/39f78fcbb4.js" crossorigin="anonymous"></script>
         <script src="../controllers_front/home.js"></script>
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+        
     </body>
 </html>

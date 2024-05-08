@@ -48,13 +48,21 @@ let tablero = [
 
 let jugadorActual = "P1";
 let turno = 1;
-
+let player1= JSON.parse(sessionStorage.getItem("player1"));
+let player2= JSON.parse(sessionStorage.getItem("player2"));
 function marcarCasilla(row, col) {
     if (tablero[row][col] === 0) {
         tablero[row][col] = jugadorActual;
         refreshtab();
         if (checkWin(jugadorActual)) {
-            alert("Ganador: " + jugadorActual);
+            if (jugadorActual=="P1"){
+                console.log("Gana: Player1")
+                EndOfGame(JSON.parse(sessionStorage.getItem("player1")),"player1",JSON.parse(sessionStorage.getItem("player2")),"player2")
+            }
+            else{
+                console.log("Gana: Player2")
+                EndOfGame(JSON.parse(sessionStorage.getItem("player2")),"player2",JSON.parse(sessionStorage.getItem("player1")),"player1")
+            }
             resetJuego();
         } else if (turno === 9) {
             alert("Empate");
@@ -114,28 +122,61 @@ function resetJuego() {
 }
 
 function refreshtab() {
-    let htmlString = "";
+    const table = document.getElementById('table');
+    let html = '';
     for (let i = 0; i < tablero.length; i++) {
-        htmlString += '<tr>';
+        html += '<tr>';
         for (let j = 0; j < tablero[i].length; j++) {
-            htmlString += '<td class="cell" id="' + i + 'x' + j + '" value="' + tablero[i][j] + '" onclick="marcarCasilla(' + i + ',' + j + ')"></td>';
+            html += `<td class="cell" value="${tablero[i][j]}" onclick="marcarCasilla(${i}, ${j})"></td>`;
         }
-        htmlString += '</tr>';
+        html += '</tr>';
     }
-    document.getElementById('table').innerHTML = htmlString;
+    table.innerHTML = html;
 }
 
 refreshtab();
-addEvents();
 
-function addEvents() {
-    for (let i = 0; i < tablero.length; i++) {
-        for (let j = 0; j < tablero[0].length; j++) {
-            document.getElementById(i + 'x' + j).addEventListener('click', function (e) {
-                marcarCasilla(i, j);
-            });
+let ScoreTable = [["Ronda","Winer","Looser"]]
+function EndOfGame(winer,Winer_player,looser,Looser_player){
+    let winer_p = 1
+    let looser_p = 0
+    ScoreTable.push([ScoreTable.length,winer.nombre+"("+winer_p+")",looser.nombre+"("+looser_p+")"])
+    alert("Gano: "+winer.nombre);
+    winer.ScoreTable.push(["Gato_"+(ScoreTable.length-1),winer.nombre+"("+winer_p+")",looser.nombre+"("+looser_p+")"])
+    looser.ScoreTable.push(["Gato_"+(ScoreTable.length-1),winer.nombre+"("+winer_p+")",looser.nombre+"("+looser_p+")"])
+    winer.Wins+=1
+    looser.Losses+=1
+    winer.Matches+=1
+    looser.Matches+=1
+    winer.Score+= winer_p
+    sessionStorage.setItem(Winer_player,JSON.stringify(winer))
+    sessionStorage.setItem(Looser_player,JSON.stringify(looser))
+    guardarScore(winer,"PUT")
+    guardarScore(looser,"PUT")
+    refreshScoreTable()
+}
+
+function guardarScore(player,method){
+    let xhr = new XMLHttpRequest();
+    xhr.open(method,"http://localhost:3000/admin/api/users");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.setRequestHeader("x-auth", "admin");
+    xhr.send(JSON.stringify(player));
+}
+
+refreshScoreTable()
+function refreshScoreTable(){
+    let Score=document.getElementById("ScoreTable")
+    let htmlString=""
+    for (let i = 0; i < ScoreTable.length; i++) {
+        //table.insertAdjacentHTML("beforeend", '<tr>')
+        htmlString+='<tr style="border: black 2px solid;">'
+        for (let j = 0; j < ScoreTable[i].length; j++) {
+            htmlString+='<td style="border: gray 1px solid;text-align: center;" >'+ScoreTable[i][j]+'</td>'
         }
-    }
+        htmlString+='</tr>'
+    }   
+    Score.innerHTML=htmlString
 }
 
 function guardarUsuario(player,method){

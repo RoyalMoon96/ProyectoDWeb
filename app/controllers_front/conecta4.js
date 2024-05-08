@@ -106,6 +106,12 @@ for(let i=0; i<tablero[0].length; i++) {
         [0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0]
         ]
+        if (player=="P1"){
+            EndOfGame(JSON.parse(sessionStorage.getItem("player1")),"player1",JSON.parse(sessionStorage.getItem("player2")),"player2")
+        }
+        else{
+            EndOfGame(JSON.parse(sessionStorage.getItem("player2")),"player2",JSON.parse(sessionStorage.getItem("player1")),"player1")
+        }
         refreshtab()
 }
     }
@@ -156,6 +162,48 @@ function addEvents(){
 }
 function seleccion(col,player) {
     addToken(col,player)
+}
+
+let ScoreTable = [["Ronda","Winer","Looser"]]
+function EndOfGame(winer,Winer_player,looser,Looser_player){
+    let winer_p = 1
+    let looser_p = 0
+    ScoreTable.push([ScoreTable.length,winer.nombre+"("+winer_p+")",looser.nombre+"("+looser_p+")"])
+    winer.ScoreTable.push(["Conecta4_"+(ScoreTable.length-1),winer.nombre+"("+winer_p+")",looser.nombre+"("+looser_p+")"])
+    looser.ScoreTable.push(["Conecta4_"+(ScoreTable.length-1),winer.nombre+"("+winer_p+")",looser.nombre+"("+looser_p+")"])
+    winer.Wins+=1
+    looser.Losses+=1
+    winer.Matches+=1
+    looser.Matches+=1
+    winer.Score+= winer_p
+    sessionStorage.setItem(Winer_player,JSON.stringify(winer))
+    sessionStorage.setItem(Looser_player,JSON.stringify(looser))
+    guardarScore(winer,"PUT")
+    guardarScore(looser,"PUT")
+    refreshScoreTable()
+}
+
+function guardarScore(player,method){
+    let xhr = new XMLHttpRequest();
+    xhr.open(method,"http://localhost:3000/admin/api/users");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.setRequestHeader("x-auth", "admin");
+    xhr.send(JSON.stringify(player));
+}
+
+refreshScoreTable()
+function refreshScoreTable(){
+    let Score=document.getElementById("ScoreTable")
+    let htmlString=""
+    for (let i = 0; i < ScoreTable.length; i++) {
+        //table.insertAdjacentHTML("beforeend", '<tr>')
+        htmlString+='<tr style="border: black 2px solid;">'
+        for (let j = 0; j < ScoreTable[i].length; j++) {
+            htmlString+='<td style="border: gray 1px solid;text-align: center;" >'+ScoreTable[i][j]+'</td>'
+        }
+        htmlString+='</tr>'
+    }   
+    Score.innerHTML=htmlString
 }
 
 function guardarUsuario(player,method){

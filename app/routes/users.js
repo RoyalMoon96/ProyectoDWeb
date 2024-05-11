@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const cors = require('cors');
+const bcrypt = require('bcrypt');
+
 router.use(cors({
     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 }));
@@ -13,6 +15,7 @@ mongoose.connect(mongoConnection).then(function(){
     User = mongoose.models['users']
 });
 
+/* 
     router.get('/', (req, res) => {
         console.log('Consultando Usuarios');
         let password = req.query.pass
@@ -28,7 +31,46 @@ mongoose.connect(mongoConnection).then(function(){
             }).then((users) => {try{res.send(users)}catch{res.send("Not Found")};})
         }        
     })
+ */
 
+router.get('/', (req, res) => {
+    console.log('Consultando Usuarios');
+    let password = req.query.pass;
+    if (password === undefined || password === null) {
+        users = User.find({
+            correo: req.query.correo
+        }).then((users) => {
+            try {
+                res.send(users[0].nombre);
+            } catch {
+                res.send("Not Found");
+            }
+        });
+    } else {
+        users = User.find({
+            correo: req.query.correo
+        }).then((users) => {
+            if (users.length === 0) {
+                res.send("Not Found");
+            } else {
+                const user = users[0];
+                bcrypt.compare(password, user.pass, (err, result) => {
+                    if (err) {
+                        console.error('Error al comparar las contraseñas:', err);
+                        res.status(500).send('Error al comparar las contraseñas');
+                    } else if (result) {
+                        res.send(users);
+                    } else {
+                        res.send("Not Found");
+                    }
+                });
+            }
+        }).catch((err) => {
+            console.error('Error al buscar el usuario:', err);
+            res.status(500).send('Error al buscar el usuario');
+        });
+    }
+});
 /* 
     let newUser = {nombre:"User2",correo:"usuario1@usuarios.com",pass:"pass1"
 };

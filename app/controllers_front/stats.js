@@ -196,7 +196,7 @@ function Registrarse(){
                 
 
                 return true;
-            }else if(flag){alert("el usuario ya existe"+response)
+            }else if(flag){alert("el usuario ya existe "+response)
             document.getElementById("btn_registro_img").hidden=true;
             document.getElementById("registro_btn_Registrarse").hidden=false;
         }

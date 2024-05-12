@@ -54,6 +54,7 @@ router.get('/', (req, res) => {
                 res.send("Not Found");
             } else {
                 const user = users[0];
+                //console.log("Password correcto?: "+ bcrypt.compareSync(password,user.pass))
                 bcrypt.compare(password, user.pass, (err, result) => {
                     if (err) {
                         console.error('Error al comparar las contraseñas:', err);

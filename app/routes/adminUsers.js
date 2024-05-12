@@ -117,6 +117,8 @@ router.put('/', (req, res) => {
     }
 });
 */
+
+
 router.put('/', (req, res) => {
     console.log("Actualizando información...");
     let id = req.body._id;
@@ -132,14 +134,20 @@ router.put('/', (req, res) => {
 
     let object_to_update = {};
     let flag_updated = false;
-
-    // Encriptar la nueva contraseña con 10 iteraciones
-    bcrypt.hash(pass, 10, (err, hashedPassword) => {
-        if (err) {
-            console.error('Error al encriptar la contraseña:', err);
-            return res.status(500).send('Error al encriptar la contraseña');
+    users = User.find({
+        correo: req.body.correo
+    }).then((users) => {
+        try {
+            users[0].nombre;
+            console.log("nombre: "+users[0].nombre);
+        } catch {
+            console.log("Not Found");
+            res.send("Not Found");
         }
-
+    // Encriptar la nueva contraseña con 10 iteraciones
+    console.log("Encriptar? "+ !bcrypt.compareSync(pass,users[0].pass))
+    if (pass!=users[0].pass) {
+        let hashedPassword=bcrypt.hashSync(pass, 10)
         if (nombre !== undefined && correo !== undefined && hashedPassword !== undefined &&
             img !== undefined && ScoreTable !== undefined && Wins !== undefined &&
             Losses !== undefined && Matches !== undefined && Score !== undefined) {
@@ -154,18 +162,31 @@ router.put('/', (req, res) => {
             object_to_update.Score = Score;
             flag_updated = true;
         }
+     }else {
+        object_to_update.nombre = users[0].nombre;
+        object_to_update.correo = users[0].correo;
+        object_to_update.pass = users[0].pass; // Guardar la contraseña encriptada
+        object_to_update.img = users[0].img;
+        object_to_update.ScoreTable = ScoreTable;
+        object_to_update.Wins = Wins;
+        object_to_update.Losses = Losses;
+        object_to_update.Matches = Matches;
+        object_to_update.Score = Score;
+        flag_updated = true;
+    } 
 
-        console.log(id);
-        if (flag_updated) {
-            User.findByIdAndUpdate(id, object_to_update, { new: true }).then((doc) => {
-                console.log("Usuario actualizado:");
-                console.log(doc);
-                res.send(doc);
-            }).catch((err) => console.log(err));
-        } else {
-            res.send("No se ha actualizado");
-        }
-    });
+    console.log("ID: "+id);
+    if (flag_updated) {
+        console.log(object_to_update)
+        User.findByIdAndUpdate(id, object_to_update, { new: true }).then((doc) => {
+            console.log("Usuario actualizado:");
+            console.log(doc);
+            res.send(doc);
+        }).catch((err) => console.log(err));
+    } else {
+        res.send("No se ha actualizado");
+    }
+});
 });
 
 

@@ -57,6 +57,7 @@ function FindPlayer(){
         if (xhr.status != 200) {
             alert(xhr.status + ": " + xhr.statusText);
         } else{
+            if (xhr.responseText=="Not Found") {alert("Usuario no encontrado"); return false};
             response = JSON.parse(xhr.responseText)
             if (response.length==0) {alert("Usuario no encontrado"); return false};
             console.log("Encontramos: ", response[0].nombre);
@@ -195,7 +196,10 @@ function Registrarse(){
                 
 
                 return true;
-            }else if(flag){alert("el usuario ya existe"+response)}
+            }else if(flag){alert("el usuario ya existe"+response)
+            document.getElementById("btn_registro_img").hidden=true;
+            document.getElementById("registro_btn_Registrarse").hidden=false;
+        }
         }
     } 
 }
@@ -221,19 +225,13 @@ function guardarUsuario(player,method){
 
 function modificarUserUnlock(p){
     let player= JSON.parse(sessionStorage.getItem(p));
-    if (document.getElementById("modificarUser_password_Key").value==player.pass){
-        document.getElementById("modificarUser_Username").disabled=false;
-        document.getElementById("modificarUser_img").disabled=false;
-        document.getElementById("modificarUser_password").disabled=false;
-        document.getElementById("modificarUser_password_2").disabled=false;
-        document.getElementById("modificarUser_btn_modificarUser").disabled=false;
-        document.getElementById("modificarUser_btn_delete").disabled=false;
-        document.getElementById("modificarUser_password").value=player.pass;
-        document.getElementById("modificarUser_password_2").value=player.pass;
-        document.getElementById("modificarUser_btn_modificarUser").onclick=function(){modificarUser(p)};
-        document.getElementById("modificarUser_btn_delete").onclick=function(){DeleteUser(p)};
-
-    }else{
+    let xhr = new XMLHttpRequest();
+    let url = "http://localhost:3000/api/users?correo="+player.correo+"&pass="+document.getElementById("modificarUser_password_Key").value
+    xhr.open("GET",url);
+    xhr.send();
+    xhr.onloadend = function (){
+    if (xhr.responseText=="Not Found"){
+        if (document.getElementById("modificarUser_password_Key").value!="") alert("Error : Wrong password");
         document.getElementById("modificarUser_Username").disabled=true;
         document.getElementById("modificarUser_img").disabled=true;
         document.getElementById("modificarUser_password").disabled=true;
@@ -242,6 +240,19 @@ function modificarUserUnlock(p){
         document.getElementById("modificarUser_btn_delete").disabled=true;
         document.getElementById("modificarUser_password").value="";
         document.getElementById("modificarUser_password_2").value="";
+    
+    }else if (xhr.responseText!="Not Found" && JSON.parse(xhr.responseText)[0].pass==player.pass){
+        document.getElementById("modificarUser_Username").disabled=false;
+        document.getElementById("modificarUser_img").disabled=false;
+        document.getElementById("modificarUser_password").disabled=false;
+        document.getElementById("modificarUser_password_2").disabled=false;
+        document.getElementById("modificarUser_btn_modificarUser").disabled=false;
+        document.getElementById("modificarUser_btn_delete").disabled=false;
+        document.getElementById("modificarUser_password").value=document.getElementById("modificarUser_password_Key").value;
+        document.getElementById("modificarUser_password_2").value=document.getElementById("modificarUser_password_Key").value;
+        document.getElementById("modificarUser_btn_modificarUser").onclick=function(){modificarUser(p)};
+        document.getElementById("modificarUser_btn_delete").onclick=function(){DeleteUser(p)};
+    }
     }
 }
 
@@ -257,16 +268,27 @@ function modificarUser(p){
         player.nombre= name
         player.pass= password
         player.img= imageURL
-        guardarUsuario(player,'PUT')
+        let xhr = new XMLHttpRequest();
+        xhr.open('PUT',"http://localhost:3000/admin/api/users");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.setRequestHeader("x-auth", "admin");
+        xhr.send(JSON.stringify(player));
+        xhr.onloadend = function(){
+        document.getElementById("btn_modificarUser_img").hidden=true;
+        document.getElementById("modificarUser_btn_modificarUser").hidden=false;
+        document.getElementById("modificarUser_btn_delete").hidden=false;
+                sessionStorage.removeItem(p)
+                document.getElementById("email").value= player.correo;
+                document.getElementById("password").value = player.pass;
+                FindPlayer();
+                PlayersCount();
+    }
         document.getElementById('modificarUser_btn_Close').click()
-        sessionStorage.setItem(p, JSON.stringify(player))
-        PlayersCount()
         document.getElementById("modificarUser_password_Key").value=""
-        modificarUserUnlock(player)
+        modificarUserUnlock(p)
 
     }else {alert("el password debe ser el mismo ");return false;}
 }
-
 
 
 function DeleteUser(p){
